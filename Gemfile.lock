@@ -166,6 +166,7 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 4.1.1)
+  rake
   rspec-rails
   sass-rails (~> 4.0.3)
   selenium-webdriver
