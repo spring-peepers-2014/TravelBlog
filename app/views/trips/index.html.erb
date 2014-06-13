@@ -1,3 +1,7 @@
 <h1>Trips Index Page</h1>
 
+<% @trips.each do |trip| %>
+  <%= trip.title %>
+<% end %>
+
 <%= link_to "New Trip", new_trip_path %>
