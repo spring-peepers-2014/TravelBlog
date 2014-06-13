@@ -28,3 +28,10 @@ body{
   top: 50px;
   width: 100%;
 }
+
+.quick-overlay {
+  background: white;
+  position: absolute;
+  z-index: 9999999;
+  padding: 2em;
+}

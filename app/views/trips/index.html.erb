@@ -1,10 +1,11 @@
-<h1>Trips Index Page</h1>
+<div class="quick-overlay">
+  <h1>Trips Index Page</h1>
 
-<% @trips.each do |trip| %>
-  <%= trip.title %>
-<% end %>
+  <% @trips.each do |trip| %>
+    <%= trip.title %>
+  <% end %>
 
-<%= link_to "New Trip", new_trip_path %>
-
+  <%= link_to "New Trip", new_trip_path %>
+</div>
 
   <div id="map-canvas"></div>
