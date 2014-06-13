@@ -5,26 +5,31 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' %>
   <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js' %>
+  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCRgPCj5H7JaEa7KaY1Pl13TUUTBcppL2Y' %>
+  <%= javascript_include_tag "/assets/map-click-test.js" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><%= link_to "Index", root_path%></li>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Index", root_path%></li>
+          <% if logged_in? %>
+            <p class="navbar-text navbar-right">(Logged in as <%= User.find(session[:user_id]).email %>) <%= link_to "Logout", '/users/logout', html: {class: 'navbar-link'} %></p>
+          <% else %>
+            <li><%= link_to "Login/Signup", '/users/new' %></li>
+          <% end %>
 
-      <% if logged_in? %>
-        <li><%= link_to "Logout", '/users/logout' %></li>
-        <li>(Logged in as <%= User.find(session[:user_id]).email %>)</li>
-      <% else %>
-        <li><%= link_to "Login/Signup", '/users/new' %></li>
-      <% end %>
-
-    </ul>
+        </ul>
+      </div>
+    </div>
   </nav>
-  
-<div id="side"></div>  
-
-<%= yield %>
+    
+  <div id="side" class="col-md-2"></div>  
+  <div id="map" class="col-md-10">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
