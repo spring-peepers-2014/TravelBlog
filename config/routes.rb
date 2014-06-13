@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :users, :only => [:new, :create]
   resources :trips, :only => [:new, :create, :index]
 
+  # Avoid clumsy URL's from deep-level nesting
+  # Best Practice: don't go deeper than 1-level nesting
+  # see http://guides.rubyonrails.org/routing.html#shallow-nesting
   resources :trips, shallow: true do
     resources :posts
     resources :photos
