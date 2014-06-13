@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include BCrypt
 
-	has_many :trips
+  has_many :trips, dependent: :destroy
   has_many :location_pins, through: :trips
   has_many :posts, through: :trips
   has_many :photos, through: :trips
