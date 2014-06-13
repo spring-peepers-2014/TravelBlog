@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       flash[:login_error] = "Incorrect email & password.  Please try again."
       redirect_to new_user_path
     else
-      flash[:login_error] = "email not found.  Please try again."
+      flash[:login_error] = "Email not found.  Please try again."
       redirect_to new_user_path
     end
   end
