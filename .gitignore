@@ -5,6 +5,7 @@ config/secrets.yml
 .DS_Store
 Gemfile.lock
 config/database.yml
+db/schema.rb
 db/*.sqlite3
 db/*.sqlite
 db/*.sqlite3-journal
@@ -29,4 +30,4 @@ chromedriver.log
 bin/
 .env
 *.swp
-
+README.rdoc
