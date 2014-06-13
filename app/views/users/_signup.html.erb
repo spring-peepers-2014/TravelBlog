@@ -1,0 +1,15 @@
+Sign Up:
+
+<%= form_for @user do |f| %>
+  <%= f.label :email, "Email: " %>
+  <%= f.text_field :email %><br>
+  <%= f.label :password, "Password: " %>
+  <%= f.password_field :password %><br>
+  <%= f.submit %>
+<% end %>
+
+<ul>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
