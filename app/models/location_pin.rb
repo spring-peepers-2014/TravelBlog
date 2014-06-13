@@ -3,4 +3,7 @@ class LocationPin < ActiveRecord::Base
   belongs_to :trip
   has_many :photos
   has_many :posts
+
+  validates :map, :presence => true
+  validates :trip, :presence => true
 end
