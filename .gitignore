@@ -9,6 +9,7 @@ db/schema.rb
 db/*.sqlite3
 db/*.sqlite
 db/*.sqlite3-journal
+db/schema.rb
 log/*.log
 tmp/
 .sass-cache/

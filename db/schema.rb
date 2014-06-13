@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20140613012124) do
   create_table "photos", force: true do |t|
     t.string   "url"
     t.integer  "location_pin_id"
-    t.integer  "trip_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,7 +43,6 @@ ActiveRecord::Schema.define(version: 20140613012124) do
     t.string   "title"
     t.text     "body"
     t.integer  "location_pin_id"
-    t.integer  "trip_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
