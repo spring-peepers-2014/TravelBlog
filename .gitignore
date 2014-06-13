@@ -3,7 +3,6 @@
 config/secrets.yml
 .bundle
 .DS_Store
-Gemfile.lock
 config/database.yml
 db/schema.rb
 db/*.sqlite3
