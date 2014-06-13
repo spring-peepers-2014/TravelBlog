@@ -4,7 +4,6 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title, :required => true
       t.text :body, :required => true
       t.belongs_to :location_pin
-      t.belongs_to :trip
       t.timestamps
     end
   end
