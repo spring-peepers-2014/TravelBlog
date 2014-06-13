@@ -2,14 +2,11 @@ Rails.application.routes.draw do
   root "trips#index"
   resources :users, :only => [:new, :create]
   resources :trips, :only => [:new, :create, :index]
-  resources :posts, :only => [:show, :edit, :update, :destroy]
-  resources :photos, :only => [:show, :edit, :update, :destroy]
 
   resources :trips, shallow: true do
-    resources :posts, :only => [:new, :create, :index]
-    resources :photos, :only => [:new, :create, :index]
+    resources :posts
+    resources :photos
   end
-
 
   post '/users/login', to: 'users#login'
   get '/users/logout', to: 'users#logout'
