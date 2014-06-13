@@ -30,3 +30,4 @@ bin/
 .env
 *.swp
 README.rdoc
+spec/spec_helper.rb
