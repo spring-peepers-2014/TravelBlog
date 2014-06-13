@@ -6,4 +6,6 @@ class LocationPin < ActiveRecord::Base
 
   validates :map, :presence => true
   validates :trip, :presence => true
+  validates :longitude, numericality: true
+  validates :latitude, numericality: true
 end
