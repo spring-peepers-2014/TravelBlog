@@ -2,11 +2,27 @@
 <html>
 <head>
   <title>TravelBlog</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' %>
+  <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav>
+    <ul>
+      <li><%= link_to "Index", root_path%></li>
+
+      <% if logged_in? %>
+        <li><%= link_to "Logout", '/users/logout' %></li>
+        <li>(Logged in as <%= User.find(session[:user_id]).email %>)</li>
+      <% else %>
+        <li><%= link_to "Login/Signup", '/users/new' %></li>
+      <% end %>
+
+    </ul>
+  </nav>
+  
+<div id="side"></div>  
 
 <%= yield %>
 
