@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user && User.authenticate(params[:user][:email], params[:user][:password])
       session[:user_id] = @user.id
       redirect_to root_path
-    elsif @user && !@user.authenticate(params[:user][:email], params[:user][:password])
+    elsif @user && !User.authenticate(params[:user][:email], params[:user][:password])
       flash[:login_error] = "Incorrect email & password.  Please try again."
       redirect_to new_user_path
     else
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
     else
-      flash[:login_error] = "That email is already taken or you didn't have a email/password. Please try again."
+      flash[:login_error] = "That email is already taken or you didn't enter a valid email/password combination. Please try again."
       redirect_to new_user_path
     end
   end
