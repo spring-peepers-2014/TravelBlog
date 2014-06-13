@@ -1,5 +1,5 @@
 # TRAVEL BLOG
-A map blog-stream where users document and relive their trips by viewing geotagged blog posts and photos pinned to a map.
+An app for travelers to document and relive their trips by pinning blog posts and photos to a map.
 
 ## QUICK START
 Run `$ bundle install`
@@ -8,9 +8,9 @@ Run `$ rake db:setup` or `$ rake db:create:all`
 
 ## MVP
 
-- A user can create trips
+A user can create trips
 
-- For each trip, a user can
+For each trip, a user can
 - add location markers to the map
 - create blog posts
 - upload photos
@@ -22,13 +22,13 @@ Run `$ rake db:setup` or `$ rake db:create:all`
 
 ## HOW TO CONTRIBUTE
 
-- Fork the repo (https://github.com/spring-peepers-2014/TravelBlog.git) to your repo
+- Fork the repo ( https://github.com/spring-peepers-2014/TravelBlog.git ) to your repo
 
 - Clone your fork to your local repo
 
 - Create new branch for each feature or bug fix on your fork
 
-`$ git checkout -b feature_branch_name (prepended by chore/, feature/, bug/)`
+`$ git checkout -b feature_branch_name` (prepended by `chore/`, `feature/`, `bug/`)
 
 - Add and commit changes to the feature branch on your local repo
 
@@ -55,11 +55,13 @@ Someone who did not write your code should review your code and approve or rejec
 
 ## TESTING
 
+- Run `$ bundle exec rake db:test:prepare` to create Postgres test database
+
 To use Chrome browser for testing with Capybara (default: Firefox):
 
 - Download Chromedriver `http://chromedriver.storage.googleapis.com/index.html`
 
-- Move extracted `chromedriver` to `/usr/bin/`
+- Extract zip file and move extracted `chromedriver` to `/usr/bin/`
 
 - Make chromedriver executable by running: `$ sudo chmod +x /usr/bin/chromedriver`
 
