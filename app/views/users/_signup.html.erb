@@ -1,6 +1,10 @@
 Sign Up:
 
 <%= form_for @user do |f| %>
+  <%= f.label :first_name, "First name: " %>
+  <%= f.text_field :first_name %><br>
+  <%= f.label :last_name, "Last name: " %>
+  <%= f.text_field :last_name %><br>
   <%= f.label :email, "Email: " %>
   <%= f.text_field :email %><br>
   <%= f.label :password, "Password: " %>
