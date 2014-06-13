@@ -8,9 +8,8 @@ describe Trip do
                         password: "123456")
     trip = Trip.new(title: "A Brand New Adventure",
                     user: user)
-    expect(trip).to be_valid
-    expect(trip.title).to eq "A Brand New Adventure"
-    expect(trip.user.email).to eq "missingno15@gmail.com"
+
+    expect(trip.save).to equal(true)
   end
 
   it "is invalid without a title" do
@@ -18,8 +17,12 @@ describe Trip do
                         last_name: "Uy",
                         email: "missingno15@gmail.com",
                         password: "123456")
-    expect {Trip.create(user: user)}.to raise_error
+    trip = Trip.new(user: user)
+    expect(trip.save).to equal(false)
   end
 
-  it "is invalid without an associated user"
+  it "is invalid without an associated user" do
+    trip = Trip.new(title: "My Summer Vacation")
+    expect(trip.save).to equal(false)
+  end
 end
