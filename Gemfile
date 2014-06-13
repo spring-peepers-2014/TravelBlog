@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.1'
 gem 'rake'
 gem 'pg'
+gem 'geocoder'
 
 gem 'bcrypt', '~> 3.1.7'
 
@@ -26,7 +27,10 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'pry'
 end
 
 group :production do
+  gem 'newrelic_rpm'
+  gem 'pry'
 end
