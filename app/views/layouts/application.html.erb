@@ -16,7 +16,7 @@
      <li>
       <%= link_to "Logout", '/users/end' %>
     </li>
-      <li>(Logged in as <%= User.find(session[:user_id]).username %>)</li>
+      <li>(Logged in as <%= User.find(session[:user_id]).email %>)</li>
     <% else %>
     <li>
       <%= link_to "Login/Signup", '/users/new' %>
