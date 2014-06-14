@@ -3,7 +3,6 @@
 config/secrets.yml
 .bundle
 .DS_Store
-config/database.yml
 db/schema.rb
 db/*.sqlite3
 db/*.sqlite
