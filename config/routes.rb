@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'trips#index'
+  root to: "trips#index"
   resources :users, :only => [:new, :create]
   resources :trips, :only => [:new, :create, :index]
   resources :trips, shallow: true do
