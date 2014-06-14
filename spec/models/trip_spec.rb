@@ -8,7 +8,6 @@ describe Trip do
                         password: "123456")
     trip = Trip.new(title: "A Brand New Adventure",
                     user: user)
-
     expect(trip.save).to equal(true)
   end
 
