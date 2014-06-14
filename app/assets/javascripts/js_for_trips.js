@@ -26,6 +26,8 @@ $( document ).ready( function() {
       }).done( function(resp) {
         console.log("resp.trip_id: " + resp.trip_id);
           $("li:last").after("<li class='list-group-item'><a href='/trips/'" + resp.trip_id + "'>" + resp.trip_title + "</a></li>");
+          $("#sidebar-new-trip").empty();
+          $("#side a:first").css('visibility', 'visible');
         });
     });
   });
