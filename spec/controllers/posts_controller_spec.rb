@@ -9,8 +9,6 @@ describe PostsController do
     end
   end
 
-  trips/:trip_id/posts
-
   describe 'GET #show' do
     it "assigns the requested post to @post" do
       post = create(:post)
