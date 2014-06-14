@@ -34,7 +34,7 @@ describe User do
     user = User.new(first_name: "Kenneth",
                     last_name: "Uy",
                     email: "missingno15@gmail.com")
-    expect(user.save).to equal(false)
+    expect{user.save}.to raise_error
   end
 
   it "does not accept duplicate emails" do
