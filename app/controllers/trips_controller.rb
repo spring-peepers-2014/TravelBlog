@@ -2,6 +2,7 @@ class TripsController < ApplicationController
 
   def index
     @trips = Trip.all
+    @trip = Trip.new
   end
 
   def new
@@ -9,7 +10,7 @@ class TripsController < ApplicationController
   end
 
   def create
-    trip_title = params[:trip][:title]
+    trip_title = params[:location]
 
     @trip = Trip.create(title: trip_title, user: User.first )
 
@@ -17,7 +18,7 @@ class TripsController < ApplicationController
 
     @location_pin = LocationPin.create(location_name: trip_title, latitude: @coords[0], longitude: @coords[1], trip: Trip.last , map: Map.last)
 
-    render json: { location: @coords, trip_title: trip_title }.to_json
+    render json: { location: @coords, trip_title: trip_title, trip_id: @trip.id }.to_json
   end
 
   def trip_params
