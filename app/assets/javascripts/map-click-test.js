@@ -37,15 +37,15 @@ function placeMarker(position, map){
     draggable: true
   });
 
-   google.maps.event.addListener(marker,'drag',function(event) {
-      document.getElementById('lat').value = event.latLng.lat();
-      document.getElementById('lng').value = event.latLng.lng();
-  });
+  //  google.maps.event.addListener(marker,'drag',function(event) {
+  //     document.getElementById('lat').value = event.latLng.lat();
+  //     document.getElementById('lng').value = event.latLng.lng();
+  // });
 
-  google.maps.event.addListener(marker,'dragend',function(event) {
-      document.getElementById('lat').value = event.latLng.lat();
-      document.getElementById('lng').value = event.latLng.lng();
-  });
+  // google.maps.event.addListener(marker,'dragend',function(event) {
+  //     document.getElementById('lat').value = event.latLng.lat();
+  //     document.getElementById('lng').value = event.latLng.lng();
+  // });
 
   var boxText = document.createElement("div");
       boxText.style.cssText = "border: 1px solid black; margin-top: 8px; background: white; padding: 5px; border-radius: 10px; font-weight:bold;";
