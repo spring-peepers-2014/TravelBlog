@@ -1,5 +1,5 @@
 $( document ).ready( function() {
-  $("form").on("submit", function(e) {
+  $("#new_trip").on("submit", function(e) {
     e.preventDefault();
 
     var data = $(this).serialize();
