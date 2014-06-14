@@ -17,8 +17,7 @@ class TripsController < ApplicationController
 
     @location_pin = LocationPin.create(location_name: trip_title, latitude: @coords[0], longitude: @coords[1], trip: Trip.last , map: Map.last)
 
-    { location: @coords, trip_title: trip_title }.to_json
-
+    render json: { location: @coords, trip_title: trip_title }.to_json
   end
 
   def trip_params

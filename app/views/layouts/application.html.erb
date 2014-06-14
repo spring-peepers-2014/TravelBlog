@@ -8,6 +8,7 @@
   <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCRgPCj5H7JaEa7KaY1Pl13TUUTBcppL2Y' %>
   <%= javascript_include_tag "/assets/map-click-test.js" %>
   <%= javascript_include_tag "/assets/infobox.js" %>
+  <%= javascript_include_tag "/assets/js_for_trips.js" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -26,10 +27,13 @@
       </div>
     </div>
   </nav>
-    
-  <div id="side" class="col-md-2"></div>  
-  <div id="map" class="col-md-10">
+
+  <div id="side" class="col-md-2">
     <%= yield %>
+  </div>
+
+  <div id="map" class="col-md-10">
+     <div id="map-canvas"></div>
   </div>
 
 </body>

@@ -1,24 +1,19 @@
-console.log("JS FOR TRIPS!");
-
-  // google.maps.event.addListener(map, 'click', function(e) {
-  //   placeWayPoint(e.latLng, map);
-  // });
-
-function initialize() {
-  console.log("INIT in JS FOR Trips")
-  $("#side").on("ajax:success", function(e, data, status, xhr) {
+$( document ).ready( function() {
+  $("form").on("submit", function(e) {
     e.preventDefault();
 
-    $("#side").append("SUCCESS!");
+    var data = $(this).serialize();
 
-    console.log("SUCCESS!");
-    console.log("data: " + data);
+    $.ajax({
+      url: '/trips',
+      type: "post",
+      data: data,
+      dataType: "json"})
+      .done( function(resp) {
+        $("#side").append("SUCCESS!");
+    });
   });
-}
-
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
+});
 
 
 
