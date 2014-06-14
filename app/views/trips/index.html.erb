@@ -4,4 +4,4 @@
     <%= trip.title %>
   <% end %>
 
-  <%= link_to "New Trip", new_trip_path %>
+  <%= link_to "New Trip", @trip, remote: true, method: :new %>
