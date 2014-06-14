@@ -5,4 +5,5 @@ class Trip < ActiveRecord::Base
   has_many :posts, through: :location_pins
 
   validates :user, :presence => true
+  validates :title, :presence => true
 end
