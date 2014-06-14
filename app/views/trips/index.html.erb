@@ -1,7 +1,8 @@
-  <h1>Trips Index Page</h1>
+<h1>Trips Index Page</h1>
+<%= link_to "New Trip", new_trip_path, id: "new-trip"%>
 
+<ul class='list-group'>
   <% @trips.each do |trip| %>
-    <%= trip.title %>
+    <li class="list-group-item"><%= link_to trip.title, trip_path(trip)%></li>
   <% end %>
-
-  <%= link_to "New Trip", @trip, remote: true, method: :new %>
+</ul>
