@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  hostname:
+  password:
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: TravelBlog_dev
+
+test:
+  <<: *default
+  database: TravelBlog_test
+
+production:
+  <<: *default
+  database: TravelBlog
