@@ -1,12 +1,11 @@
 $( document ).ready( function() {
-  $('body').delegate('.list-group-item > a', 'click', function(e) {
-    console.log("IN LOAD PINS!!");
+  $('body').delegate('.list-group-item > a.marker_load', 'click', function(e) {
     e.preventDefault();
 
     var data = $(this).data("trip-id");
 
     $.ajax({
-        url: '/trips/' + data,
+        url: '/trips/' + data + '/markers',
         type: "get",
         data: data,
         dataType: "json"

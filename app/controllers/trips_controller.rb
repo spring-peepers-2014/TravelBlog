@@ -36,4 +36,20 @@ class TripsController < ApplicationController
   def trip_params
     @trip.require(:trip).permit(:title, :user)
   end
+
+
+  def show_markers
+    marker = []
+    locations = Trip.find(params[:id]).location_pins
+
+    locations.each_with_index do |location, i|
+      marker << { coords: { lat: location.latitude, lon: location.longitude }}
+
+      location.posts.each do |post|
+        marker[i][:posts] = { title: post.title, body: post.body }
+      end 
+
+    end
+    render json: { marker: marker }.to_json
+  end
 end
