@@ -11,10 +11,14 @@ $( document ).ready( function() {
         data: data,
         dataType: "json"
       }).done( function(resp) {
-        for (var i = 0; i < resp.coords.length; i++) {
-          myLatlng = new google.maps.LatLng(resp.coords[i].lat, resp.coords[i].lon);
-          placeMarker(myLatlng, theMap);
-        }
+        console.log(resp);
+        for (var i = 0; i < resp.marker.length; i++) {
+          myLatlng = new google.maps.LatLng(resp.marker[i].coords.lat, resp.marker[i].coords.lon);
+          title = resp.marker[i].posts.title;
+          body = resp.marker[i].posts.body;
+          console.log(title + body);
+          placeMarker(myLatlng, theMap, title, body);
+        } // Only works for one post per location pin
       });
   });
 });

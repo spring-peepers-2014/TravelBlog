@@ -103,7 +103,7 @@ function initialize(map) {
     });
 }
 
-function placeMarker(position, map) {
+function placeMarker(position, map, title, body) {
     var marker = new google.maps.Marker({
         position: position,
         map: map,
@@ -122,19 +122,19 @@ function placeMarker(position, map) {
 
     var boxText = document.createElement("div");
     boxText.style.cssText = "border: 1px solid black; margin-top: 8px; background: white; padding: 5px; border-radius: 10px; font-weight:bold;";
-    boxText.innerHTML = "City Hall, Sechelt<br>British Columbia<br>Canada";
+    boxText.innerHTML = "Title: " + title + "<br>" + "Body: " + body;
     // Store information in here from server posts/photos ^
 
     var myOptions = {
         content: boxText,
         disableAutoPan: false,
         maxWidth: 0,
-        pixelOffset: new google.maps.Size(-140, 0),
+        pixelOffset: new google.maps.Size(-70, 0),
         zIndex: null,
         boxStyle: {
             background: "url('tipbox.gif') no-repeat",
             opacity: 0.75,
-            width: "280px"
+            width: "140px"
         },
         closeBoxMargin: "10px 2px 2px 2px",
         closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif",
