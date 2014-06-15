@@ -1,0 +1,9 @@
+<%= link_to "All Trips", trips_path, class: "btn" %>
+<h2><%= @trip.title %></h2>
+<hr>
+<% @locations.each do |location| %>
+   <h3 class="location-names"><%= location.name %></h3>
+   <% get_posts(location).each do |post| %>
+    <%= link_to post.title, post_path(post) %></p>
+   <% end %>
+<% end %>

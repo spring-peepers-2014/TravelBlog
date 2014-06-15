@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
+  include PostHelper
 
   # get '/trips/:trip_id/posts(.:format)' => posts#index
   def index
-    @posts = Trip.find(params[:trip_id]).posts
+    @trip = Trip.find params[:trip_id]
+    @locations = @trip.location_pins
   end
 
   # get '/trips/:trip_id/posts/new(.:format)' => posts#new
@@ -14,16 +16,19 @@ class PostsController < ApplicationController
   # post '/trips/:trip_id/posts(.:format)' => posts#create
   def create
     @trip = Trip.find params[:trip_id]
-    @post = Post.new params[:post]
+    @location = LocationPin.create(location_name: params[:post][:location_pin], latitude: 30, longitude: 9, trip: @trip, map_id: 1)
+    @post = @location.posts.build(post_params)
     if @post.save
-      redirect_to trip_posts
+      redirect_to trip_posts_path
     else
       render :"posts/new"
+    end
   end
 
   # get '/posts/:id(.:format)' => posts#show
   def show
-    @post = Post.find params[:post_id]
+    @post = Post.find params[:id]
+    @trip = @post.location_pin.trip
   end
 
   # get '/posts/:id/edit(.:format)' => posts#edit
@@ -33,6 +38,7 @@ class PostsController < ApplicationController
 
   # put '/posts/:id(.:format)'  => posts#update
   def update
+    @post = Post.find params[:id]
   end
 
   # delete '/posts/:id(.:format)' => posts#destroy
@@ -41,6 +47,12 @@ class PostsController < ApplicationController
     post.destroy
     redirect_to trip_posts
   end
+
+  private
+
+    def post_params
+      params.require(:post).permit(:title, :body)
+    end
 end
 
 # trip_posts
