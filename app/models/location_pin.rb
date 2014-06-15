@@ -8,4 +8,8 @@ class LocationPin < ActiveRecord::Base
   validates :trip, :presence => true
   validates :longitude, numericality: true
   validates :latitude, numericality: true
+
+  def name
+    self.location_name
+  end
 end
