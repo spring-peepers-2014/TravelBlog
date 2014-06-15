@@ -2,6 +2,7 @@ class TripsController < ApplicationController
 
   def index
     @trips = Trip.all
+    @trip = Trip.new
   end
 
   def new
@@ -9,9 +10,18 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip = Trip.create(title: params[:trip][:title], user_id: 1)
-    @coords =  Geocoder.coordinates(params[:trip][:title])
-    @location_pin = LocationPin.create(location_name: params[:trip][:title], latitude: @coords[0], longitude: @coords[1], trip_id: 1, map_id: 1)
-    redirect_to root_path
+    trip_title = params[:location]
+
+    @trip = Trip.create(title: trip_title, user: User.first )
+
+    @coords = Geocoder.coordinates(trip_title)
+
+    @location_pin = LocationPin.create(location_name: trip_title, latitude: @coords[0], longitude: @coords[1], trip: @trip, map: Map.last)
+
+    render json: { location: @coords, trip_title: trip_title, trip_id: @trip.id }.to_json
+  end
+
+  def trip_params
+    @trip.require(:trip).permit(:title, :user)
   end
 end
