@@ -10,15 +10,23 @@ class TripsController < ApplicationController
   end
 
   def create
-    trip_title = params[:location]
+    location = params[:location]
 
-    @trip = Trip.create(title: trip_title, user: User.first )
+    @trip = Trip.create(title: location, user: User.first )
 
-    @coords = Geocoder.coordinates(trip_title)
+    @coords = Geocoder.coordinates(location)
 
-    @location_pin = LocationPin.create(location_name: trip_title, latitude: @coords[0], longitude: @coords[1], trip: @trip, map: Map.last)
+    @location_pin = LocationPin.create(location_name: location, latitude: @coords[0], longitude: @coords[1], trip: @trip, map: Map.last)
 
-    render json: { location: @coords, trip_title: trip_title, trip_id: @trip.id }.to_json
+    render json: { location: @coords, trip_title: location, trip_id: @trip.id }.to_json
+  end
+
+  def show
+    puts "PARAMS: #{params}"
+    @location_pin = LocationPin.find(params[:id])
+    lat = @location_pin.latitude
+    lon = @location_pin.longitude
+    render json: { lat: lat , lon: lon }.to_json
   end
 
   def trip_params
