@@ -33,11 +33,6 @@ class TripsController < ApplicationController
     end
   end
 
-  def trip_params
-    @trip.require(:trip).permit(:title, :user)
-  end
-
-
   def show_markers
     marker = []
     locations = Trip.find(params[:id]).location_pins
@@ -52,4 +47,12 @@ class TripsController < ApplicationController
     end
     render json: { marker: marker }.to_json
   end
+  
+  private 
+  
+  def trip_params
+    @trip.require(:trip).permit(:title, :user)
+  end
+
+
 end
