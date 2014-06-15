@@ -4,6 +4,6 @@
 <% @locations.each do |location| %>
    <h3 class="location-names"><%= location.name %></h3>
    <% get_posts(location).each do |post| %>
-    <%= link_to post.title, post_path(post) %></p>
+    <%= link_to post.title, post_path(post) %>
    <% end %>
 <% end %>
