@@ -1,20 +1,16 @@
+<div id="side" class="col-md-2">
 <h1>New Post</h1>
-<ul>
   <%= form_for [@trip, @post] do |f| %>
-      <li>
+    <br>
       <%= f.label "Location" %>
       <%= f.text_field :location_pin %>
-    </li>
-    <li>
+    <br>
       <%= f.label :title %>
       <%= f.text_field :title %>
-    </li>
-    <li>
+    <br>
       <%= f.label :body %>
       <%= f.text_area :body  %>
-    </li>
-    <li>
+    <br>
       <%= f.submit %>
-    </li>
   <% end %>
-</ul>
+</div>
