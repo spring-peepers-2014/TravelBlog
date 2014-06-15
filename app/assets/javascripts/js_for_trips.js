@@ -23,7 +23,7 @@ $( document ).ready( function() {
         console.log("resp.trip_id: " + resp.trip_id);
           $("ul.list-group").append("<li class='list-group-item'><a href='/trips/" + resp.trip_id + "'>" + resp.trip_title + "</a></li>");
           $("#sidebar-new-trip").empty();
-          $("#side a:first").css('visibility', 'visible');
+          $("#new-trip").css('visibility', 'visible');
 
           myLatlng = new google.maps.LatLng(parseFloat(resp.location[0]),parseFloat(resp.location[1]));
           placeMarker(myLatlng, theMap);
