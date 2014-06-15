@@ -77,6 +77,11 @@ $( document ).ready( function() {
         mapOptions);
 
     google.maps.event.addDomListener(window, 'load', initialize(theMap));
+
+    $('#draw-route').on('click', function(e) {
+        e.preventDefault();
+        calcRoute();
+    });
 });
 
 function initialize(map) {
@@ -86,7 +91,7 @@ function initialize(map) {
     google.maps.event.addListener(map, 'click', function(e) {
         console.log("e.latLng: " + e.latLng);
         placeWayPoint(e.latLng, map); // WAYPOINTS
-        placeMarker(e.latLng, map); // MARKERS WITH INFOBOXS
+        placeMarker(e.latLng, map, e.lat, e.lon); // MARKERS WITH INFOBOXS
     });
 
     google.maps.event.addListener(map, "zoom_changed", function() {
@@ -98,7 +103,7 @@ function initialize(map) {
     });
 }
 
-function placeMarker(position, map) {
+function placeMarker(position, map, title, body) {
     var marker = new google.maps.Marker({
         position: position,
         map: map,
@@ -117,19 +122,18 @@ function placeMarker(position, map) {
 
     var boxText = document.createElement("div");
     boxText.style.cssText = "border: 1px solid black; margin-top: 8px; background: white; padding: 5px; border-radius: 10px; font-weight:bold;";
-    boxText.innerHTML = "City Hall, Sechelt<br>British Columbia<br>Canada";
+    boxText.innerHTML = "Title: " + title + "<br>" + "Body: " + body;
     // Store information in here from server posts/photos ^
 
     var myOptions = {
         content: boxText,
         disableAutoPan: false,
         maxWidth: 0,
-        pixelOffset: new google.maps.Size(-140, 0),
+        pixelOffset: new google.maps.Size(-70, 0),
         zIndex: null,
         boxStyle: {
-            background: "url('tipbox.gif') no-repeat",
             opacity: 0.75,
-            width: "280px"
+            width: "140px"
         },
         closeBoxMargin: "10px 2px 2px 2px",
         closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif",
@@ -146,7 +150,6 @@ function placeMarker(position, map) {
 function placeWayPoint(position, map) {
     var current_waypoint = wayPointCreator(position);
     wayPointPusher(current_waypoint);
-    calcRoute(current_waypoint);
     // map.panTo(position);
 }
 
@@ -165,18 +168,20 @@ function wayPointPusher(position) {
     });
 }
 
-function calcRoute(waypoint) {
-    console.log("calcroute waypoint: " + waypoint);
-    console.log("waypoint array: " + waypoint_array);
-
+function calcRoute() {
+    var origin = waypoint_array[0].location;
     var destination_marker = waypoint_array[waypoint_array.length - 1].location;
-    // Stores three waypoints on initial click - needs fix
+    var middle_waypoints = waypoint_array;
+        middle_waypoints.shift();
+        middle_waypoints.pop();
+
     var request = {
-        origin: waypoint_array[0].location,
+        origin: origin,
+        waypoints: middle_waypoints,
         destination: destination_marker,
-        waypoints: waypoint_array,
         travelMode: google.maps.TravelMode.DRIVING
     };
+    
     directionsService.route(request, function(response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
