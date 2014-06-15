@@ -1,11 +1,11 @@
 $( document ).ready( function() {
 
-  $("#side a:first").on("click", function(e) {
+  $("#new-trip").on("click", function(e) {
     e.preventDefault();
 
     var title_html = "<form action='/trips' method='post' id='tt'>Title: <input type='text' id='titletext'><input type='submit' value='Submit'></form>";
 
-    $("#side a:first").css('visibility', 'hidden');
+    $("#new-trip").css('visibility', 'hidden');
 
     $("#sidebar-new-trip").html(title_html);
 

@@ -182,6 +182,7 @@ function calcRoute() {
         destination: destination_marker,
         travelMode: google.maps.TravelMode.DRIVING
     };
+    
     directionsService.route(request, function(response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
