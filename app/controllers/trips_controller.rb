@@ -23,10 +23,14 @@ class TripsController < ApplicationController
 
   def show
     puts "PARAMS: #{params}"
-    @location_pin = LocationPin.find(params[:id])
-    lat = @location_pin.latitude
-    lon = @location_pin.longitude
-    render json: { lat: lat , lon: lon }.to_json
+    coords = []
+
+    locations = Trip.find(params[:id]).location_pins
+
+    locations.each do |location|
+      coords << { lat: location.latitude, lon: location.longitude }
+    end
+    render json: { coords: coords }.to_json
   end
 
   def trip_params
