@@ -1,5 +1,5 @@
 <h1>Trips Index Page</h1>
-<%= link_to "New Trip", @trip, remote: true %>
+<%= link_to "New Trip", @trip, remote: true, id: "new-trip" %>
 <div id='sidebar-new-trip'></div>
 <ul class='list-group'>
   <% @trips.each do |trip| %>
