@@ -41,3 +41,7 @@ body{
   z-index: 9999999;
   padding: 2em;
 }
+
+.marker_load {
+  float: right;
+}

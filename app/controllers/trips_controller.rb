@@ -23,6 +23,22 @@ class TripsController < ApplicationController
   end
 
   def show
+    @coords = []
+
+    @trip = Trip.find(params[:id])
+    @locations = @trip.location_pins
+
+    @locations.each do |location|
+      @coords << { lat: location.latitude, lon: location.longitude }
+    end
+  end
+
+  def trip_params
+    @trip.require(:trip).permit(:title, :user)
+  end
+
+
+  def show_markers
     marker = []
     locations = Trip.find(params[:id]).location_pins
 
@@ -34,22 +50,6 @@ class TripsController < ApplicationController
       end 
 
     end
-     p marker
     render json: { marker: marker }.to_json
-  end
- 
- # marker {  
-   # coords: {lat: lat, lon: lon},
-   # posts: { 
-   # 0 => { title: "Title", body: "body" },
-   # 1 => { title: "Title", body: "body" },
-   # 2 => { title: "Title", body: "body" }
- # }
-
-
-
-
-  def trip_params
-    @trip.require(:trip).permit(:title, :user)
   end
 end
