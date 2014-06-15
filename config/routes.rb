@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root to: "trips#index"
   resources :users, :only => [:new, :create]
-  # resources :trips, :only => [:new, :create, :index]
   resources :trips, shallow: true do
     resources :locations, :only => [:index, :show, :create, :destroy], :controller => "location_pins"
     resources :posts
