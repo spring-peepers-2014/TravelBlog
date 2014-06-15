@@ -17,13 +17,12 @@ class TripsController < ApplicationController
 
     @coords = Geocoder.coordinates(location)
 
-    @location_pin = LocationPin.create(location_name: trip_title, latitude: @coords[0], longitude: @coords[1], trip: @trip, map: current_user.map)
+    @location_pin = LocationPin.create(location_name: location, latitude: @coords[0], longitude: @coords[1], trip: @trip, map_id: 1)
 
     render json: { location: @coords, trip_title: location, trip_id: @trip.id }.to_json
   end
 
   def show
-    puts "PARAMS: #{params}"
     coords = []
 
     locations = Trip.find(params[:id]).location_pins
