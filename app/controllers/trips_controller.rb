@@ -23,14 +23,14 @@ class TripsController < ApplicationController
   end
 
   def show
-    coords = []
+    @coords = []
 
-    locations = Trip.find(params[:id]).location_pins
+    @trip = Trip.find(params[:id])
+    @locations = @trip.location_pins
 
-    locations.each do |location|
-      coords << { lat: location.latitude, lon: location.longitude }
+    @locations.each do |location|
+      @coords << { lat: location.latitude, lon: location.longitude }
     end
-    render json: { coords: coords }.to_json
   end
 
   def trip_params
