@@ -1,3 +1,4 @@
 class Map < ActiveRecord::Base
-  has_many :location_pins
+  belongs_to :user
+  has_many :location_pins, dependent: :destroy
 end
