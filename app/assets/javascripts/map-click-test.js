@@ -5,8 +5,11 @@ var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 var directionsService = new google.maps.DirectionsService();
 var waypoint_array = [];
 
-function initialize() {
-    var mapOptions = {
+var mapOptions;
+var theMap;
+
+$( document ).ready( function() {
+    mapOptions = {
         center: new google.maps.LatLng(40.7127837, -74.0059413),
         zoom: 7,
         styles: [{
@@ -69,11 +72,19 @@ function initialize() {
             }]
         }]
     };
-    var map = new google.maps.Map(document.getElementById("map-canvas"), // map elememt ID
+
+    theMap = new google.maps.Map(document.getElementById("map-canvas"), // map elememt ID
         mapOptions);
+
+    google.maps.event.addDomListener(window, 'load', initialize(theMap));
+});
+
+function initialize(map) {
+
     directionsDisplay.setMap(map);
 
     google.maps.event.addListener(map, 'click', function(e) {
+        console.log("e.latLng: " + e.latLng);
         placeWayPoint(e.latLng, map); // WAYPOINTS
         placeMarker(e.latLng, map); // MARKERS WITH INFOBOXS
     });
@@ -88,7 +99,6 @@ function initialize() {
 }
 
 function placeMarker(position, map) {
-
     var marker = new google.maps.Marker({
         position: position,
         map: map,
@@ -174,4 +184,4 @@ function calcRoute(waypoint) {
     });
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+
