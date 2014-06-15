@@ -23,15 +23,31 @@ class TripsController < ApplicationController
   end
 
   def show
-    coords = []
-
+    marker = []
     locations = Trip.find(params[:id]).location_pins
 
-    locations.each do |location|
-      coords << { lat: location.latitude, lon: location.longitude }
+    locations.each_with_index do |location, i|
+      marker << { coords: { lat: location.latitude, lon: location.longitude }}
+
+      location.posts.each do |post|
+        marker[i][:posts] = { title: post.title, body: post.body }
+      end 
+
     end
-    render json: { coords: coords }.to_json
+     p marker
+    render json: { marker: marker }.to_json
   end
+ 
+ # marker {  
+   # coords: {lat: lat, lon: lon},
+   # posts: { 
+   # 0 => { title: "Title", body: "body" },
+   # 1 => { title: "Title", body: "body" },
+   # 2 => { title: "Title", body: "body" }
+ # }
+
+
+
 
   def trip_params
     @trip.require(:trip).permit(:title, :user)
