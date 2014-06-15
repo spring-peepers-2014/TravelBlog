@@ -77,6 +77,11 @@ $( document ).ready( function() {
         mapOptions);
 
     google.maps.event.addDomListener(window, 'load', initialize(theMap));
+
+    $('#draw-route').on('click', function(e) {
+        e.preventDefault();
+        calcRoute();
+    });
 });
 
 function initialize(map) {
@@ -146,7 +151,6 @@ function placeMarker(position, map) {
 function placeWayPoint(position, map) {
     var current_waypoint = wayPointCreator(position);
     wayPointPusher(current_waypoint);
-    calcRoute(current_waypoint);
     // map.panTo(position);
 }
 
@@ -165,16 +169,17 @@ function wayPointPusher(position) {
     });
 }
 
-function calcRoute(waypoint) {
-    console.log("calcroute waypoint: " + waypoint);
-    console.log("waypoint array: " + waypoint_array);
-
+function calcRoute() {
+    var origin = waypoint_array[0].location;
     var destination_marker = waypoint_array[waypoint_array.length - 1].location;
-    // Stores three waypoints on initial click - needs fix
+    var middle_waypoints = waypoint_array;
+        middle_waypoints.shift();
+        middle_waypoints.pop();
+
     var request = {
-        origin: waypoint_array[0].location,
+        origin: origin,
+        waypoints: middle_waypoints,
         destination: destination_marker,
-        waypoints: waypoint_array,
         travelMode: google.maps.TravelMode.DRIVING
     };
     directionsService.route(request, function(response, status) {
