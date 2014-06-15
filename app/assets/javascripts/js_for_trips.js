@@ -3,7 +3,7 @@ $( document ).ready( function() {
   $("#side a:first").on("click", function(e) {
     e.preventDefault();
 
-    var title_html = "<form action='/trips' method='post' id='tt'>Title: <input type='text' id='titletext'><input type='submit' value='Submit'></form>";
+    var title_html = "<form action='/trips' method='post' id='tt'>Title: <input type='text' id='titletext'><input type='submit' value='Submit'></form>"
 
     $("#side a:first").css('visibility', 'hidden');
 
@@ -15,7 +15,9 @@ $( document ).ready( function() {
       e.preventDefault();
 
       var data = {location: $("input:text").val()};
-
+// This does correctly append the link of the trip, but not
+// immediately. I.e., you must refresh before it has the
+// correct href....not sure why
       $.ajax({
         url: '/trips',
         type: "post",
@@ -23,8 +25,7 @@ $( document ).ready( function() {
         dataType: "json"
       }).done( function(resp) {
         console.log("resp.trip_id: " + resp.trip_id);
-        console.log('/trips/' + resp.trip_id + '/');
-          $("li:last").after("<li class='list-group-item'><a href='/trips/" + resp.trip_id + "'>" + resp.trip_title + "</a></li>");
+          $("li:last").after("<li class='list-group-item'><a href='/trips/'" + resp.trip_id + "'>" + resp.trip_title + "</a></li>");
           $("#sidebar-new-trip").empty();
           $("#side a:first").css('visibility', 'visible');
 
