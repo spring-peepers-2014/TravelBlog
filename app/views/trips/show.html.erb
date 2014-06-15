@@ -1,3 +1,4 @@
+<div id="side" class="col-md-2">
 <%= link_to "All Trips", trips_path, class: "btn" %>
 <h2><%= @trip.title %></h2>
 <hr>
@@ -7,7 +8,10 @@
     <%= link_to post.title, post_path(post) %></p>
    <% end %>
 <% end %>
-
+</div>
+<div id="map" class="col-md-10">
+   <div id="map-canvas"></div>
+</div>
 <% @coords.each do |coord| %>
   <% lat = coord[:lat] %>
   <% lon = coord[:lon] %>
