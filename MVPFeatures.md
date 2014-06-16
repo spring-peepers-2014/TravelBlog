@@ -43,7 +43,6 @@ User can view a single blog post with title and body. User can create a new blog
 ## In Progress
 - User can upload trip photos
 - User can associate photos with a location pin
-
 - User can view profile/account settings
 - User can update profile/account settings
 - User can delete account
