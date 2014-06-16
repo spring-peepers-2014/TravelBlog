@@ -30,16 +30,17 @@ class TripsController < ApplicationController
 
   def show_markers
     marker = []
-    locations = Trip.find(params[:id]).location_pins
+    locationpins = Trip.find(params[:id]).location_pins
 
-    locations.each_with_index do |location, i|
-      marker << { coords: { lat: location.latitude, lon: location.longitude }}
+    locationpins.each_with_index do |locationpin, i|
+      marker << { coords: { lat: locationpin.location.latitude, lon: locationpin.location.longitude }}
 
-      location.posts.each do |post|
+      locationpin.posts.each do |post|
         marker[i][:posts] = { title: post.title, body: post.body }
       end
 
     end
+    p marker
     render json: { marker: marker }.to_json
   end
 
