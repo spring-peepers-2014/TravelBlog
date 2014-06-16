@@ -5,22 +5,9 @@
     <button type="button" class="btn btn-warning"><%= link_to "All Trips", trips_path %></button>
   </div>
   <%= render partial: "loc_posts", locals: {locationpins: @locationpins} %>
+  <%= link_to "Go pins", root_path, remote: true, data: { :'trip-id' => @trip.id}, id: 'auto_load_pins', class: 'hidden' %>
 </div>
 
 <div id="map" class="col-md-10">
    <div id="map-canvas"></div>
 </div>
-
-<% @coords.each do |coord| %>
-  <% lat = coord[:lat] %>
-  <% lon = coord[:lon] %>
-  <% title = coord[:title] %>
-  <% body = coord[:body] %>
-
-  <script type="text/javascript">
-    $( document ).ready(function() {
-      myLatlng = new google.maps.LatLng('<%= lat %>', '<%= lon %>' );
-      placeMarker(myLatlng, theMap, '<%= title %>', '<%= body %>');
-    });
-  </script>
-<% end %>
