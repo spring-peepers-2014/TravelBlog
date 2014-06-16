@@ -3,7 +3,9 @@
   <h2><%= @trip.title %></h2>
   <hr>
   <% @locationpins.each do |locationpin| %>
-     <h3 class="location-names"><%= locationpin.location.name %></h3>
+    <% location = locationpin.location %>
+     <h3 class="location-names">
+      <%= link_to location.name, location_path(location) %></h3>
      <% get_posts(locationpin).each do |post| %>
       <%= link_to post.title, post_path(post) %></p>
      <% end %>
