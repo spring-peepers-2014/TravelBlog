@@ -23,20 +23,15 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @locationpins = @trip.location_pins
 
-    @locationpins.each do |locationpin|
-      @coords << locationpin.coords
-    end
   end
 
   def show_markers
     marker = []
     locationpins = Trip.find(params[:id]).location_pins
 
-    locationpins.each_with_index do |locationpin, i|
-      marker << { coords: locationpin.coords }
-
+    locationpins.each do |locationpin|
       locationpin.posts.each do |post|
-        marker[i][:posts] = { title: post.title, body: post.body }
+        marker << { coords: locationpin.coords, posts: {title: post.title, body: post.body} }
       end
 
     end

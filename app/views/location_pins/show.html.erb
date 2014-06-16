@@ -2,7 +2,7 @@
   <div class="btn-group">
     <%= render partial: "trips/back_to_trip_new_post", locals: {trip: @trip} %>
   </div>  
-  <%= render partial: "trips/loc_posts", locals: {locationpins: @locationpins} %>
+  <%= render partial: "trips/loc_posts", locals: {locationpins: @trip.location_pins } %>
 </div>
 
 <div class="col-md-10"> 
@@ -11,9 +11,9 @@
   </div>
   <h3><%= @trip.title %></h3>
   <% @posts.each do |post| %>
-  <div class="panel panel-info">
-    <h4 class="panel-heading"><%= link_to post.title, post_path(post) %></h4>
-    <div class="panel-body"><%= post.body %></div>
-  </div>
+    <div class="panel panel-info">
+      <h4 class="panel-heading"><%= link_to post.title, post_path(post) %></h4>
+      <div class="panel-body"><%= post.body %></div>
+    </div>
   <% end %>
 </div>
