@@ -12,7 +12,7 @@ class TripsController < ApplicationController
   def create
     location = params[:location]
 
-    @trip = Trip.create(title: location, user_id: current_user.id )
+    @trip = current_user.trips.create(title: location)
 
     render json: { trip_title: location, trip_id: @trip.id }.to_json
   end
