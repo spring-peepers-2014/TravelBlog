@@ -6,6 +6,7 @@ class TripsController < ApplicationController
   end
 
   def new
+    redirect_to root_path unless logged_in?
     @trip = Trip.new
   end
 
@@ -24,7 +25,7 @@ class TripsController < ApplicationController
     @locationpins = @trip.location_pins
 
     @locationpins.each do |locationpin|
-      @coords << { lat: locationpin.location.latitude, lon: locationpin.location.longitude }
+      @coords << locationpin.coords
     end
   end
 
@@ -33,7 +34,7 @@ class TripsController < ApplicationController
     locationpins = Trip.find(params[:id]).location_pins
 
     locationpins.each_with_index do |locationpin, i|
-      marker << { coords: { lat: locationpin.location.latitude, lon: locationpin.location.longitude }}
+      marker << { coords: locationpin.coords }
 
       locationpin.posts.each do |post|
         marker[i][:posts] = { title: post.title, body: post.body }
