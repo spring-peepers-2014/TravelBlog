@@ -1,32 +1,33 @@
 /log/*.log
-/tmp
-config/secrets.yml
-.bundle
-.DS_Store
 db/schema.rb
-db/*.sqlite3
 db/*.sqlite
 db/*.sqlite3-journal
 log/*.log
 tmp/
 .sass-cache/
-.DS_store
-coverage
-doc/api
-doc/app
-curriculum/.pygments-cache
-curriculum/public/*
-public/assets
-*.tmproj
-*~
-\#*#
-.idea/
 ignored/
-.irb-save-history
+.DS_Store
+.DS_store
 chromedriver.log
-.tddium*
-bin/
-.env
-*.swp
-README.rdoc
-spec/spec_helper.rb
+
+# Created by http://www.gitignore.io
+### Rails ###
+*.rbc
+capybara-*.html
+/log
+/tmp
+/db/*.sqlite3
+/public/system
+/coverage/
+/spec/tmp
+**.orig
+rerun.txt
+pickle-email-*.html
+
+## Environment normalisation:
+/.bundle
+/vendor/bundle
+
+# these should all be checked in to normalise the environment:
+# Gemfile.lock, .ruby-version, .ruby-gemset
+.rvmrc
