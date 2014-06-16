@@ -1,7 +1,9 @@
 <div id="side" class="col-md-2">  
-  <h1>Trips Index Page</h1>
-  <a id="draw-route" href="#">Draw Route</a>
-  <%= link_to "New Trip", @trip, remote: true, id: "new-trip" %>
+  <h1>Trips</h1>
+  <div class="btn-group">
+    <button id="draw-route" type="button" class="btn btn-primary">Draw Route</button>
+    <button id="new-trip" type="button" class="btn btn-info"><%= link_to "New Trip", @trip, remote: true %></button>
+  </div>
   <div id='sidebar-new-trip'></div>
   <ul class='list-group'>
     <% @trips.each do |trip| %>

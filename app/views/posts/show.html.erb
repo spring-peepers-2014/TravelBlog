@@ -3,6 +3,8 @@
   <%= link_to "+ New Post", new_trip_post_path(@trip), class: "btn" %>
 </div>
 <div id="map" class="col-md-10">
-  <h1><%= @post.title %></h1>
-  <p><%= @post.body %></p>
+  <div class="panel panel-info">
+    <h1 class="panel-heading"><%= @post.title %></h1>
+    <div class="panel-body"><%= @post.body %></div>
+  </div>
 </div>

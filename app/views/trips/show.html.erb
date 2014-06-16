@@ -1,14 +1,17 @@
 <div id="side" class="col-md-2">
   <%= link_to "All Trips", trips_path, class: "btn" %>
   <h2><%= @trip.title %></h2>
-  <hr>
   <% @locationpins.each do |locationpin| %>
     <% location = locationpin.location %>
-     <h3 class="location-names">
-      <%= link_to location.name, location_path(location) %></h3>
-     <% get_posts(locationpin).each do |post| %>
-      <%= link_to post.title, post_path(post) %></p>
-     <% end %>
+    <div class="list-group">
+      <div class="list-group-item">
+       <h3 class="location-names list-group-item-heading">
+        <%= link_to location.name, location_path(location) %></h3>
+        <% get_posts(locationpin).each do |post| %>
+        <li class="list-group-item-text"><%= link_to post.title, post_path(post) %></li>
+       <% end %>
+      </div>
+    </div>
   <% end %>
 </div>
 
@@ -19,11 +22,13 @@
 <% @coords.each do |coord| %>
   <% lat = coord[:lat] %>
   <% lon = coord[:lon] %>
+  <% title = coord[:title] %>
+  <% body = coord[:body] %>
 
   <script type="text/javascript">
     $( document ).ready(function() {
-      myLatlng = new google.maps.LatLng('<%= lat %>', '<%= lon %>');
-      placeMarker(myLatlng, theMap);
+      myLatlng = new google.maps.LatLng('<%= lat %>', '<%= lon %>' );
+      placeMarker(myLatlng, theMap, '<%= title %>', '<%= body %>');
     });
   </script>
 <% end %>
