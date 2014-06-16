@@ -1,0 +1,12 @@
+<% locationpins.each do |locationpin| %>
+  <% location = locationpin.location %>
+  <div class="list-group">
+    <div class="list-group-item">
+     <h3 class="location-names list-group-item-heading">
+      <%= link_to location.name, location_path(location) %></h3>
+      <% get_posts(locationpin).each do |post| %>
+      <li class="list-group-item-text"><%= link_to post.title, post_path(post) %></li>
+     <% end %>
+    </div>
+  </div>
+<% end %>
