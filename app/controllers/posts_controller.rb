@@ -46,16 +46,16 @@ class PostsController < ApplicationController
 
   private
 
-    def post_params
-      params.require(:post).permit(:title, :body)
-    end
+  def post_params
+    params.require(:post).permit(:title, :body)
+  end
 
-      def location_params
-      location = params[:post][:location_pin]
-      geolocation = Geocoder.search(location).first
-      coords = geolocation.coordinates
-      name = "#{geolocation.city}, #{geolocation.state_code}"
+  def location_params
+    location = params[:post][:location_pin]
+    geolocation = Geocoder.search(location).first
+    coords = geolocation.coordinates
+    name = "#{geolocation.city}, #{geolocation.state_code}"
 
-      params = { name: name, latitude: coords[0], longitude: coords[1] }
-    end
+    params = { name: name, latitude: coords[0], longitude: coords[1] }
+  end
 end
