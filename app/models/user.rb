@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   include BCrypt
   has_secure_password
 
-  has_one :map, dependent: :destroy
   has_many :trips, dependent: :destroy
   has_many :location_pins, through: :trips
   has_many :posts, through: :trips
