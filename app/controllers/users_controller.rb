@@ -21,7 +21,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      @user.create_map
       redirect_to root_path
     else
       flash[:login_error] = "That email is already taken or you didn't enter a valid email/password combination. Please try again."
