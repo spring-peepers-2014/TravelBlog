@@ -6,16 +6,12 @@
   <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' %>
   <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js' %>
   <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCRgPCj5H7JaEa7KaY1Pl13TUUTBcppL2Y' %>
-  <%= javascript_include_tag "/assets/map-click-test.js" %>
-  <%= javascript_include_tag "/assets/infobox.js" %>
-  <%= javascript_include_tag "/assets/js_for_trips.js" %>
-  <%= javascript_include_tag "/assets/js_location.js" %>
-  <%= javascript_include_tag "/assets/load_pins.js" %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-  <%= render "layouts/navbar" %>  
+  <%= render "layouts/navbar" %>
   <%= yield %>
 
 </body>

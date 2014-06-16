@@ -10,9 +10,14 @@ class TripsController < ApplicationController
   end
 
   def create
+    # 1. Inline this temp, not needed
     location = params[:location]
 
     @trip = current_user.trips.create(title: location)
+
+    # Weird, you just updated a Trip to have a title, why 
+    # don't you ask **it** for the title versus this temp variable?  Seems
+    # weird.  Trust your database.
 
     render json: { trip_title: location, trip_id: @trip.id }.to_json
   end

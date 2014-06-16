@@ -4,6 +4,7 @@
   <hr>
   <% @locations.each do |location| %>
      <h3 class="location-names"><%= location.name %></h3>
+<%# something is wrong and this get_posts thing proves it... %>
      <% get_posts(location).each do |post| %>
       <%= link_to post.title, post_path(post) %>
      <% end %>
