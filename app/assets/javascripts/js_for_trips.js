@@ -3,7 +3,11 @@ $(document).ready(function() {
     $("#new-trip").on("click", function(e) {
         e.preventDefault();
 
-        var title_html = "<form action='/trips' method='post' id='tt'>Title: <input type='text' id='titletext'><input type='submit' value='Submit'></form>";
+    var title_html = "<br><form class='input-group' action='/trips' method='post' id='tt'>" +
+                        "<input type='text' class='form-control' id='titletext'>" +
+                        "<span class='input-group-btn'>" +
+                        "<input type='submit' class='btn btn-default' value='Go'></span>" +
+                      "</form><br>";
 
         $("#new-trip").css('visibility', 'hidden');
 
