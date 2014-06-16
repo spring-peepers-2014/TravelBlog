@@ -1,5 +1,5 @@
 class LocationPinsController < ApplicationController
-  include LocationsHelper
+  # include LocationsHelper
 
   def create
       trip = Trip.find(params[:trip_id])
@@ -18,9 +18,9 @@ class LocationPinsController < ApplicationController
 
 # /locations/:id
     def show
-      pin = LocationPin.find(params[:id])
-      @trip = pin.trip
-      @location = pin.location
+      @location = Location.find(params[:id])
+      @posts = @location.location_pins[0].posts
+      @trip_title = @location.location_pins[0].trip.title
     end
 
     def destroy
