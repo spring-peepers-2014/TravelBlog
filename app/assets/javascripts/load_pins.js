@@ -1,3 +1,6 @@
+// :'-(
+//
+// No elegance in this JS.
 $( document ).ready( function() {
   $('body').delegate('.list-group-item > a.marker_load', 'click', function(e) {
     e.preventDefault();

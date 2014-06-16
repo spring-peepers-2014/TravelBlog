@@ -1,3 +1,13 @@
+/* Wait, so for a largely front-end app, this is your solution
+ * for testability?  Where's the Jasmine?
+*
+*
+*  Come to think of it, this code lives in the javascript directory
+*  so that means eery time your app runs you're delivering this
+*  to the client?  Do you want them to always get this?  Can 
+*  this be removed?  
+*
+* */
 var rendererOptions = {
     draggable: true
 };

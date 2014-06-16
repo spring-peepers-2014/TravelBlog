@@ -1,3 +1,4 @@
+// I did teach you how to separate concerns, right?
 $(document).ready(function() {
 
     $("#add-location").on("click", function(e) {

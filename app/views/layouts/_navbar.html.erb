@@ -4,6 +4,7 @@
         <ul class="nav navbar-nav">
           <li><%= link_to "Index", root_path%></li>
           <% if current_user %>
+            <%# No, why aren't you using the named routes? %>
             <p class="navbar-text navbar-right">(Logged in as <%= current_user.email %>) <%= link_to "Logout", '/users/logout', html: {class: 'navbar-link'} %></p>
           <% else %>
             <li><%= link_to "Login/Signup", '/users/new' %></li>
