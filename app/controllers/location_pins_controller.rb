@@ -4,12 +4,8 @@ class LocationPinsController < ApplicationController
     trip = Trip.find params[:trip_id]
     location = Location.find_or_create_by location_params
     location_pin = trip.location_pins.find_or_create_by(location: location)
-
-    if LocationPin.exists? location_pin
-      redirect_to trip_posts_path
-    else
-      render :"posts/new"
-    end
+    
+    render json: { trip: { local: location_pin, name: location_pin.name }}.to_json
   end
 
   def index

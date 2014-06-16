@@ -3,8 +3,8 @@ $(document).ready(function() {
     $("#new-trip").on("click", function(e) {
         e.preventDefault();
 
-    var title_html = "<br><form class='input-group' action='/trips' method='post' id='tt'>" +
-                        "<input type='text' class='form-control' id='titletext'>" +
+      var title_html = "<br><form class='input-group' action='/trips' method='post' id='tt'>" +
+                        "<input type='text' class='form-control' placeholder='My Road Trip Summer 2011'>" +
                         "<span class='input-group-btn'>" +
                         "<input type='submit' class='btn btn-default' value='Go'></span>" +
                       "</form><br>";
