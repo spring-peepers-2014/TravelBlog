@@ -1,5 +1,4 @@
 class LocationPinsController < ApplicationController
-  before_action :validate_user
 
   def create
     trip = Trip.find params[:trip_id]
