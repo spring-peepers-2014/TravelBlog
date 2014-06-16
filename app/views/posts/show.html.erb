@@ -1,8 +1,9 @@
 <div id="side" class="col-md-2">
-  <%= link_to @trip.title,  trip_path(@trip), class: "btn" %><br>
-  <%= link_to "+ New Post", new_trip_post_path(@trip), class: "btn" %>
+  <div class="btn-group">
+    <%= render partial: "trips/back_to_trip_new_post", locals: {trip: @trip} %>
+  </div>
 </div>
-<div id="map" class="col-md-10">
+<div class="col-md-10">
   <div class="panel panel-info">
     <h1 class="panel-heading"><%= @post.title %></h1>
     <div class="panel-body"><%= @post.body %></div>
