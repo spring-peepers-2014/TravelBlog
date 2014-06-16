@@ -1,18 +1,10 @@
 <div id="side" class="col-md-2">
-  <%= link_to "All Trips", trips_path, class: "btn" %>
   <h2><%= @trip.title %></h2>
-  <% @locationpins.each do |locationpin| %>
-    <% location = locationpin.location %>
-    <div class="list-group">
-      <div class="list-group-item">
-       <h3 class="location-names list-group-item-heading">
-        <%= link_to location.name, location_path(location) %></h3>
-        <% get_posts(locationpin).each do |post| %>
-        <li class="list-group-item-text"><%= link_to post.title, post_path(post) %></li>
-       <% end %>
-      </div>
-    </div>
-  <% end %>
+  <div class="btn-group">
+    <button id="draw-route" type="button" class="btn btn-primary">Draw Route</button>
+    <button type="button" class="btn btn-warning"><%= link_to "All Trips", trips_path %></button>
+  </div>
+  <%= render partial: "loc_posts", locals: {locationpins: @locationpins} %>
 </div>
 
 <div id="map" class="col-md-10">
