@@ -6,4 +6,7 @@
   <%= post.body %><br>
 <% end %>
 
+<% @photos.each do |photo| %>
+  <%= link_to photo.url, photo.url %><br>
+<% end %>
 

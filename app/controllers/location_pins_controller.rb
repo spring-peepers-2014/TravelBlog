@@ -20,6 +20,7 @@ class LocationPinsController < ApplicationController
     def show
       @location = Location.find(params[:id])
       @posts = @location.location_pins[0].posts
+      @photos = @location.location_pins[0].photos
       @trip_title = @location.location_pins[0].trip.title
     end
 
