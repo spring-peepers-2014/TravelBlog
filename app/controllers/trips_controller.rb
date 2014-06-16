@@ -1,5 +1,4 @@
 class TripsController < ApplicationController
-  include ApplicationHelper
 
   def index
     @trips = Trip.all
@@ -13,13 +12,9 @@ class TripsController < ApplicationController
   def create
     location = params[:location]
 
-    @trip = Trip.create(title: location, user: User.first )
+    @trip = current_user.trips.create(title: location)
 
-    @coords = Geocoder.coordinates(location)
-
-    @location_pin = LocationPin.create(location_name: location, latitude: @coords[0], longitude: @coords[1], trip: @trip, map_id: 1)
-
-    render json: { location: @coords, trip_title: location, trip_id: @trip.id }.to_json
+    render json: { trip_title: location, trip_id: @trip.id }.to_json
   end
 
   def show
