@@ -40,14 +40,13 @@ class TripsController < ApplicationController
       end
 
     end
-    p marker
     render json: { marker: marker }.to_json
   end
 
   private
 
   def trip_params
-    @trip.require(:trip).permit(:title, :user)
+    @trip.require(:trip).permit(:title)
   end
 
 
