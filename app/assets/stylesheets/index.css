@@ -8,7 +8,9 @@ body{
 
 #side { 
   height: 100%;
-  float:left; 
+  box-shadow: 3px 0px 2px rgba(0,0,0,1);
+  position: relative;
+  z-index: 999;
   background: rgb(44,44,44);
   background: -moz-linear-gradient(top,  rgba(44,44,44,1) 0, rgba(25,25,25,1) 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0,rgba(44,44,44,1)), color-stop(100%,rgba(25,25,25,1)));
@@ -52,8 +54,26 @@ button a {
 
 button a:hover {
   text-decoration: none;
+  color: white;
 }
 
 textarea {
   color: black;
+}
+
+li.list-group-item-text a:before {
+    content: '\203A\00a0';
+}
+
+h1.panel-heading, h2.panel-heading, 
+h3.panel-heading, h4.panel-heading,
+h5.panel-heading {
+  margin-top: 0;
+ }
+
+.col-md-10 {
+  padding-top: 15px;
+}
+#map.col-md-10 {
+  padding-top: 0;
 }
