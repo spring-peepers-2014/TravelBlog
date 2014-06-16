@@ -120,22 +120,22 @@ function placeMarker(position, map, title, body) {
     //     document.getElementById('lng').value = event.latLng.lng();
     // });
 
-    var boxText = document.createElement("div");
-    boxText.style.cssText = "border: 1px solid black; margin-top: 8px; background: white; padding: 5px; border-radius: 10px; font-weight:bold;";
-    boxText.innerHTML = "Title: " + title + "<br>" + "Body: " + body;
+    var boxText = "<div class='panel-heading'>"+ title + "</div>" +
+                  "<div class='panel-body'>" + body + "</div>";
     // Store information in here from server posts/photos ^
 
     var myOptions = {
         content: boxText,
         disableAutoPan: false,
         maxWidth: 0,
-        pixelOffset: new google.maps.Size(-70, 0),
+        pixelOffset: new google.maps.Size(-100, 0),
         zIndex: null,
         boxStyle: {
-            opacity: 0.75,
-            width: "140px"
+            opacity: 1,
+            width: "200px"
         },
-        closeBoxMargin: "10px 2px 2px 2px",
+        boxClass: "panel panel-warning",
+        closeBoxMargin: "2px 2px 2px 2px",
         closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif",
         infoBoxClearance: new google.maps.Size(1, 1),
         isHidden: false,
