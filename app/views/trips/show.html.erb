@@ -3,7 +3,14 @@
   <div class="btn-group">
     <button id="draw-route" type="button" class="btn btn-primary">Draw Route</button>
     <button type="button" class="btn btn-warning"><%= link_to "Trips", trips_path %></button>
-    <button id="add-location-btn" type="button" class="btn btn-success"><%= link_to "Add Location", root_path, remote: true, id: 'add-location' %></button>
+    <button id="add-location-btn" type="button" class="btn btn-info"><%= link_to "Add Location", root_path, remote: true, id: 'add-location' %></button>
+      <br><br>
+      <form class='input-group hidden' action='/trips/#{@trip.id}/locations' method='post' id='location-create'>
+        <input type='text' class='form-control' placeholder='San Francisco, CA'>
+        <span class='input-group-btn'>
+        <input type='submit' class='btn btn-default' value='+'></span>
+      </form>
+      <br>
   </div>
   <div id='sidebar-new-trip'></div>
   <div id='trip-show-container'>
