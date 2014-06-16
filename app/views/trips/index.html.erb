@@ -7,7 +7,7 @@
   <div id='sidebar-new-trip'></div>
   <ul class='list-group'>
     <% @trips.each do |trip| %>
-      <li class="list-group-item"><%= link_to trip.title, trip_path(trip) %><%= link_to "+", root_path, remote: true, data: { :'trip-id' => trip.id}, class: 'marker_load' %></li>
+      <li class="list-group-item"><%= link_to trip.title, trip_path(trip) %><%= link_to content_tag(:span, '+', class: "badge"), root_path, remote: true, data: { :'trip-id' => trip.id}, class: 'marker_load' %></li>
     <% end %>
   </ul>
 </div>

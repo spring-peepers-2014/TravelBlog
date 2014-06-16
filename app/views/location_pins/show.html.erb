@@ -1,14 +1,20 @@
-<div id="side" class="col-md-2">  
-  
+<div id="side" class="col-md-2">
+  <div class="btn-group">
+    <%= render partial: "trips/back_to_trip_new_post", locals: {trip: @trip} %>
+  </div>  
+  <%= render partial: "trips/loc_posts", locals: {locationpins: @locationpins} %>
 </div>
 
-<div id="map" class="col-md-10"> 
-  <h1>All Blog Posts for <%= @location.name %></h1> 
-  <h3><%= @trip_title %></h3>
+<div class="col-md-10"> 
+  <div class="page-header">
+    <h1><%= @location.name %> <small>- Blog Posts</small> </h1> 
+  </div>
+  
+  <h3><%= @trip.title %></h3>
   <% @posts.each do |post| %>
-  <ul class="list-group">
-    <li class="list-group-item list-group-item-success"> <%= link_to post.title, post_path(post) %></li>
-    <li class="list-group-item"><%= post.body %></li>
-  </ul>
+  <div class="panel panel-info">
+    <h4 class="panel-heading"><%= link_to post.title, post_path(post) %></h4>
+    <div class="panel-body"><%= post.body %></div>
+  </div>
   <% end %>
 </div>
