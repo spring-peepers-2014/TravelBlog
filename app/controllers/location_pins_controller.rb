@@ -1,36 +1,41 @@
 class LocationPinsController < ApplicationController
-  # include LocationsHelper
+  before_action :validate_user
 
   def create
-      trip = Trip.find(params[:trip_id])
-      geolocation = Geocoder.search(params[:location]).first
-      coords = geolocation.coordinates
-      name = "#{geolocation.city}, #{geolocation.state_code}"
+    trip = Trip.find params[:trip_id]
+    location = Location.find_or_create_by location_params
+    location_pin = trip.location_pins.find_or_create_by(location: location)
 
-      location = Location.find_or_create_by(name: name, latitude: coords[0], longitude: coords[1])
-      trip.location_pins.find_or_create_by(location: location)
-
-      redirect_to trip_locations_path
+    if LocationPin.exists? location_pin
+      redirect_to trip_posts_path
+    else
+      render :"posts/new"
     end
-
-    def index
-    end
-
-# /locations/:id
-    def show
-      @location = Location.find(params[:id])
-      @posts = @location.location_pins[0].posts
-      @photos = @location.location_pins[0].photos
-      @trip_title = @location.location_pins[0].trip.title
-    end
-
-    def destroy
-      LocationPin.destroy(params[:id])
-    end
-
   end
 
- # trip_locations GET    /trips/:trip_id/locations(.:format) location_pins#index
- #               POST   /trips/:trip_id/locations(.:format) location_pins#create
- #      location GET    /locations/:id(.:format)            location_pins#show
- #               DELETE /locations/:id(.:format)            location_pins#destroy
+  def index
+  end
+
+  def show
+    location_pin = LocationPin.find params[:id]
+    @location = location_pin.location
+    @posts = location_pin.posts
+    @photos = location_pin.photos
+    @trip = location_pin.trip
+  end
+
+  def destroy
+    LocationPin.destroy params[:id]
+  end
+
+  private
+
+  def location_params
+    location = params[:location]
+    geolocation = Geocoder.search(location).first
+    coords = geolocation.coordinates
+    name = "#{geolocation.city}, #{geolocation.state_code}"
+
+    params = { name: name, latitude: coords[0], longitude: coords[1] }
+  end
+end
