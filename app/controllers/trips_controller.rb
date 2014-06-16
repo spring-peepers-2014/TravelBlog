@@ -6,7 +6,6 @@ class TripsController < ApplicationController
   end
 
   def new
-    redirect_to root_path unless logged_in?
     @trip = Trip.new
   end
 

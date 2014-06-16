@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :validate_user
+
   def new
     @user = User.new
   end
@@ -26,6 +28,11 @@ class UsersController < ApplicationController
       flash[:login_error] = "That email is already taken or you didn't enter a valid email/password combination. Please try again."
       redirect_to new_user_path
     end
+  end
+
+  def destroy
+    User.destroy(params[:id])
+    session.clear
   end
 
   def logout

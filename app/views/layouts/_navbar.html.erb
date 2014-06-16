@@ -3,8 +3,8 @@
       <div class="navbar-header">
         <ul class="nav navbar-nav">
           <li><%= link_to "Index", root_path%></li>
-          <% if logged_in? %>
-            <p class="navbar-text navbar-right">(Logged in as <%= User.find(session[:user_id]).email %>) <%= link_to "Logout", '/users/logout', html: {class: 'navbar-link'} %></p>
+          <% if current_user %>
+            <p class="navbar-text navbar-right">(Logged in as <%= current_user.email %>) <%= link_to "Logout", '/users/logout', html: {class: 'navbar-link'} %></p>
           <% else %>
             <li><%= link_to "Login/Signup", '/users/new' %></li>
           <% end %>
