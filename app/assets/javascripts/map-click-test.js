@@ -110,18 +110,12 @@ function placeMarker(position, map, title, body) {
         draggable: true
     });
 
-    //  google.maps.event.addListener(marker,'drag',function(event) {
-    //     document.getElementById('lat').value = event.latLng.lat();
-    //     document.getElementById('lng').value = event.latLng.lng();
-    // });
+    var t = title || "The Greatest Title";
+    var b = body || "A somewhat great body";
 
-    // google.maps.event.addListener(marker,'dragend',function(event) {
-    //     document.getElementById('lat').value = event.latLng.lat();
-    //     document.getElementById('lng').value = event.latLng.lng();
-    // });
 
-    var boxText = "<div class='panel-heading'>"+ title + "</div>" +
-                  "<div class='panel-body'>" + body + "</div>";
+    var boxText = "<div class='panel-heading'>"+ t + "</div>" +
+                  "<div class='panel-body'>" + b + "</div>";
     // Store information in here from server posts/photos ^
 
     var myOptions = {
