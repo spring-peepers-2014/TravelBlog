@@ -1,4 +1,4 @@
-<div id="side" class="col-md-2">  
+<div id="side" class="col-md-2">
   <h1>Trips</h1>
   <div class="btn-group">
     <button id="draw-route" type="button" class="btn btn-primary">Draw Route</button>
@@ -14,7 +14,7 @@
   <div id='sidebar-new-trip'></div>
   <ul class='list-group'>
     <% @trips.each do |trip| %>
-      <li class="list-group-item"><%= link_to trip.title, trip_path(trip) %><%= link_to content_tag(:span, '+', class: "badge"), root_path, remote: true, data: { :'trip-id' => trip.id}, class: 'marker_load' %></li>
+      <li class="list-group-item"><%= link_to trip.title, trip_path(trip), data: { :'trip-id' => trip.id} %></li>
     <% end %>
   </ul>
 </div>
