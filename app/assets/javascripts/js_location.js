@@ -2,9 +2,7 @@ $(document).ready(function() {
 
     $("#add-location").on("click", function(e) {
         e.preventDefault();
-
         $("#location-create").toggleClass("hidden");
-
     });
 
         $("#location-create").on("submit", function(e) {
@@ -26,5 +24,7 @@ $(document).ready(function() {
                  Map.addPin(Map.getPosition(resp.trip.lat, resp.trip.lon))
             });
     });
+
+
 });
 
