@@ -1,4 +1,5 @@
 class LocationPinsController < ApplicationController
+  before_action :validate_user
 
   def create
     trip = Trip.find params[:trip_id]
@@ -9,6 +10,15 @@ class LocationPinsController < ApplicationController
   end
 
   def index
+    @trip = Trip.find params[:trip_id]
+    @pins = @trip.location_pins.map do |pin|
+      { name: pin.name, coords: pin.coords }
+    end
+    if request.xhr?
+      render json: @pins.to_json
+    else
+      render "trips/show"
+    end
   end
 
   def show
@@ -26,8 +36,8 @@ class LocationPinsController < ApplicationController
   private
 
   def location_params
-    location = params[:location]
-    geolocation = Geocoder.search(location).first
+    location_cache = params[:location]
+    geolocation = Geocoder.search(location_cache).first
     coords = geolocation.coordinates
     name = "#{geolocation.city}, #{geolocation.state_code}"
 
