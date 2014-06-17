@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   post '/users/login', to: 'users#login'
   get '/users/logout', to: 'users#logout'
-  get '/trips/:id/markers', to: 'trips#show_markers'
+  get '/trips/:id/markers', to: 'trips#show_markers', as: :show_pins
 end
