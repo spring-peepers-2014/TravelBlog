@@ -9,7 +9,7 @@ class LocationPin < ActiveRecord::Base
 
   def coords
     location = self.location
-    coords = { lat: location.latitude, lon: location.longitude }
+    coords = [ location.latitude, location.longitude ]
   end
 
   def name
