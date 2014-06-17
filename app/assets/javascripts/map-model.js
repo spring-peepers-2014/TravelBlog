@@ -17,4 +17,21 @@ Map = {
     var pin = this._createPin(latlongobject);
     console.log(pin);
   },
+  getAjaxData: function(url, type, done_function) {
+    var xhr = $.ajax({
+      url: url,
+      type: type,
+      dataType: "json"
+    })
+    return xhr;
+  },
+  loadTripPins: function(tripid){
+    var url = '/trips/' + tripid + '/markers';
+    var type = "get";
+    (this.getAjaxData(url, type)).done( function(resp) {
+      for (var i = 0; i < resp.lpins.length; i++) {
+        Map.addPin(Map.getPosition(resp.lpins[i].coords.lat, resp.lpins[i].coords.lon))
+      }
+    });
+  },
 };
