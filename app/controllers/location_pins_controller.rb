@@ -4,8 +4,8 @@ class LocationPinsController < ApplicationController
     trip = Trip.find params[:trip_id]
     location = Location.find_or_create_by location_params
     location_pin = trip.location_pins.find_or_create_by(location: location)
-    
-    render json: { trip: { local: location_pin, name: location_pin.name }}.to_json
+
+    render json: { trip: { id: location.id, name: location.name, lat: location.latitude, lon: location.longitude }}.to_json
   end
 
   def index
