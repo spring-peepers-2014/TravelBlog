@@ -9,9 +9,30 @@ Trip.Controller = {
     .done( function(location) {
       Map.addPin(Map.getPosition(location.coords.lat, location.coords.lon));
       var trip = new Trip.Presenter(location.name, location.id, "h3").presentLocation();
-      $('#trip-show-container').prepend(trip);
-    });
+      var $prependLocation = this._findTheTripInsertionNode(location.name, trip);
+    }.bind(this));
   },
+
+  _findTheTripInsertionNode: function(soughtName, newNode) {
+    var reduce = Array.prototype.reduce,
+      nameCollection = [],
+      existingNames = $(".location-names"),
+      nameLookupTable = reduce.call(existingNames, function(prevValue, currValue){
+        var name = $(currValue).find("a").text();
+        prevValue[name] = $(currValue);
+        nameCollection.push(name);
+        return prevValue;
+      }, {});
+
+    if ( $.inArray(soughtName, nameCollection) < 1 ) {
+      // TODO:  fix jQuery magic...
+      $(".location-names:first").parents(".trip-show-container").append(newNode)
+    } else {
+      // TODO:  fix jQuery magic...
+      $(nameLookupTable[soughtName]).append(newNode);
+    }
+  },
+
   addTrip: function(trip_name){
     $.ajax({
       url: '/trips',

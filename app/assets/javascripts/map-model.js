@@ -1,5 +1,6 @@
 Map = {
   init: function(selector, options) {
+    this.allPins = [];
     this.gMap = google.maps
     this.mapDisplay = new google.maps.Map(selector, options)
   },
@@ -7,11 +8,13 @@ Map = {
     return new this.gMap.LatLng(parseFloat(lat),parseFloat(lon));
 },
   _createPin: function(position) {
-    return new this.gMap.Marker({
+    var newPin = new this.gMap.Marker({
       position: position,
       map: this.mapDisplay,
       draggable: false
     });
+    this.allPins.push(newPin);
+    return newPin;
   },
   addPin: function(latlongobject) {
     var pin = this._createPin(latlongobject);
