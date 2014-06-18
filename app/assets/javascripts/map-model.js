@@ -37,5 +37,13 @@ Map = {
         Map.addPin( Map.getPosition(resp.lpins[i].coords[0], resp.lpins[i].coords[1]), resp.lpins[i].name );
       }
     });
+  },
+  _nameMapPins: function(){
+    var pin_names =[];
+    for (var i = 0; i < Map.allPins.length; i++) {
+      pin_names.push(Map.allPins[i].name);
+    }
+    return pin_names;
   }
+
 };
