@@ -44,9 +44,13 @@ class LocationPinsController < ApplicationController
   def location_params
     location_cache = params[:location]
     geolocation = Geocoder.search(location_cache).first
-    coords = geolocation.coordinates
-    name = "#{geolocation.city}, #{geolocation.state_code}"
 
-    params = { name: name, latitude: coords[0], longitude: coords[1] }
+    return nil if geolocation.nil?
+
+    coords = geolocation.coordinates
+    city_state_name = "#{geolocation.city}, #{geolocation.state_code}"
+    city_state_name = geolocation.state_code if city_state_name.split(',').first.empty?
+
+    { name: city_state_name, latitude: coords[0], longitude: coords[1] }
   end
 end
