@@ -20,8 +20,11 @@ Trip.Controller = {
       dataType: 'JSON'
     })
     .done( function(resp) {
-      var trip = new Trip.Presenter(resp.trip_title, resp.trip_id).presentTrip();
-      $(".list-group").prepend(trip);
+      console.log(resp);
+      if(resp.trip_id !== null) {
+        var trip = new Trip.Presenter(resp.trip_title, resp.trip_id).presentTrip();
+        $(".list-group").prepend(trip);
+      }
     });
   },
 };
