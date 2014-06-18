@@ -2,7 +2,6 @@
   <h2><%= @trip.title %></h2>
   <div class="btn-group">
     <button type="button" class="btn btn-warning"><%= link_to "Trips", trips_path %></button>
-    <button id="add-location-btn" type="button" class="btn btn-info"><%= link_to "Add Location", root_path, remote: true, id: 'add-location' %></button>
       <br><br>
       <form class='input-group' action='/trips/<%= @trip.id %>/locations' method='post' id='location-create'>
         <input type='text' class='form-control' placeholder='San Francisco, CA'>
