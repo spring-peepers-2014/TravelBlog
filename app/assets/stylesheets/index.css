@@ -79,3 +79,11 @@ h5.panel-heading {
 }
 
 input[type='submit'].btn { color: white !important;}
+#login-container {
+  position: fixed;
+  z-index: 9999;
+}
+
+.modal-dialog {
+  padding-top: 15%;
+}
