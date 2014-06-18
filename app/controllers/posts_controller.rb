@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :validate_user
   include PostHelper
 
   def index

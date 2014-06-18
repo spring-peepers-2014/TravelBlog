@@ -1,4 +1,5 @@
 class TripsController < ApplicationController
+  before_action :validate_user
 
   def index
     @trips = session[:user_id] ? Trip.all.where(user_id: session[:user_id]).order(created_at: :asc) : []

@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
-  before_action :validate_user, except: [:current_user, :validate_user]
   # Prevent CSRF attacks by raising an exception.
   # Use :null_session with API.
   protect_from_forgery with: :null_session
