@@ -13,16 +13,6 @@ describe LocationPin do
     expect(build(:location_pin, trip_id: nil)).to_not be_valid
   end
 
-  # it "destroys associated photos when destroyed" do
-  #   location_pin = create(:location_pin)
-  #   location_pin.photos.create(
-  #     url:"https://lh3.googleusercontent.com/-13M6tjYnqls/U5TXLnJ4yfI/AAAAAAAFNgE/naSGoGGY1Gs/s0/09+-+1"
-  #   )
-  #   location_pin.destroy
-
-  #   expect(Photo.any?).to equal(false)
-  # end
-
   it "destroys associated post when destroyed" do
     location_pin = create(:location_pin)
     post_associated_trip = create(:trip)
