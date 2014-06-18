@@ -13,7 +13,9 @@
   <div id='sidebar-new-trip'></div>
   <ul class='list-group'>
     <% @trips.each do |trip| %>
-      <li class="list-group-item"><%= link_to trip.title, trip_path(trip), data: { :'trip-id' => trip.id} %></li>
+      <% if trip.user.id == session[:user_id] %>
+        <li class="list-group-item"><%= link_to trip.title, trip_path(trip), data: { :'trip-id' => trip.id} %></li>
+      <% end %>
     <% end %>
   </ul>
 </div>
