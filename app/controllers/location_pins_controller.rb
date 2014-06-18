@@ -3,9 +3,15 @@ class LocationPinsController < ApplicationController
 
   def create
     trip = Trip.find params[:trip_id]
-    location = Location.find_or_create_by location_params
-    location_pin = trip.location_pins.find_or_create_by(location: location)
+    location = Location.find_by location_params
 
+    if location
+      flash[:location_exists] = "The location #{location} already exists for this trip. Please click the location with this name on the sidebar."
+    else
+      location = Location.create location_params
+    end
+
+    location_pin = trip.location_pins.find_or_create_by(location: location)
     render json: { trip: { id: location_pin.id, name: location.name, lat: location.latitude, lon: location.longitude }}.to_json
   end
 
