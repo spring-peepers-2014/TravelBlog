@@ -3,7 +3,7 @@
     <div class="list-group-item">
      <h3 class="location-names list-group-item-heading">
       <%= link_to locationpin.name, location_path(locationpin) %></h3>
-      <% get_posts(locationpin).each do |post| %>
+      <% get_posts(locationpin).reverse_each do |post| %>
       <li class="list-group-item-text"><%= link_to post.title, post_path(post) %></li>
      <% end %>
     </div>
