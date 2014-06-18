@@ -7,7 +7,7 @@ Trip.Controller = {
       dataType: "JSON"
     })
     .done( function(location) {
-      Map.addPin(Map.getPosition(location.coords.lat, location.coords.lon));
+      Map.addPin(Map.getPosition(location.coords.lat, location.coords.lon), location.name);
       var trip = new Trip.Presenter(location.name, location.id, "h3").presentLocation();
       $('#trip-show-container').prepend(trip);
     });
