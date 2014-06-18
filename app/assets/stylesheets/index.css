@@ -77,3 +77,5 @@ h5.panel-heading {
 #map.col-md-10 {
   padding-top: 0;
 }
+
+input[type='submit'].btn { color: white !important;}
