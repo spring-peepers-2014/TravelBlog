@@ -1,16 +1,8 @@
 require 'spec_helper'
 
 describe User do
-  it "is valid with all these first, last name, email, and password" do
+  it "is valid with email, and password" do
     expect(build(:user)).to be_valid
-  end
-
-  it "is invalid without a first_name" do
-    expect(build(:user, first_name: nil)).to_not be_valid
-  end
-
-  it "is invalid without a last_name" do
-    expect(build(:user, last_name: nil)).to_not be_valid
   end
 
   it "is invalid without an email" do
@@ -19,6 +11,10 @@ describe User do
 
   it "is invalid without a password" do
     expect(build(:user, password: nil)).to_not be_valid
+  end
+
+  it "is invalid without a password" do
+    expect(build(:user, password: "")).to_not be_valid
   end
 
   it "is invalid with a password less than 6 characters" do
