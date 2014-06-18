@@ -9,10 +9,8 @@
   </div>
   <div id='sidebar-new-trip'></div>
   <ul class='list-group'>
-    <% @trips.reverse_each do |trip| %>
-      <% if trip.user.id == session[:user_id] %>
-        <li class="list-group-item"><%= link_to trip.title, trip_path(trip), data: { :'trip-id' => trip.id} %></li>
-      <% end %>
+    <% @trips.each do |trip| %>
+      <li class="list-group-item"><%= link_to trip.title, trip_path(trip), data: { :'trip-id' => trip.id} %></li>
     <% end %>
   </ul>
   <div class="clearfix">&nbsp;</div>
