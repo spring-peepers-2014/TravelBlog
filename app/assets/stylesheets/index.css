@@ -87,3 +87,9 @@ input[type='submit'].btn { color: white !important;}
 .modal-dialog {
   padding-top: 15%;
 }
+
+#user_index {
+  background: url('/assets/index_bg.png');
+  background-size: cover;
+  height: 100%;
+}
