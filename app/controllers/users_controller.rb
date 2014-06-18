@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  skip_before_action :validate_user
 
   def new
     @user = User.new
