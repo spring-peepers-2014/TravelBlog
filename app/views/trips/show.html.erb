@@ -1,11 +1,10 @@
 <div id="side" class="col-md-2">
   <h2><%= @trip.title %></h2>
   <div class="btn-group">
-    <button id="draw-route" type="button" class="btn btn-primary">Draw Route</button>
     <button type="button" class="btn btn-warning"><%= link_to "Trips", trips_path %></button>
     <button id="add-location-btn" type="button" class="btn btn-info"><%= link_to "Add Location", root_path, remote: true, id: 'add-location' %></button>
       <br><br>
-      <form class='input-group hidden' action='/trips//locations' method='post' id='location-create'>
+      <form class='input-group' action='/trips/<%= @trip.id %>/locations' method='post' id='location-create'>
         <input type='text' class='form-control' placeholder='San Francisco, CA'>
         <span class='input-group-btn'>
         <input type='submit' class='btn btn-default' value='+'></span>
@@ -18,7 +17,7 @@
   </div>
 </div>
 
-<div id="map" class="col-md-10">
+<div id="map" class="col-md-10" data-trip-id="<%= @trip.id %>">
    <div id="map-canvas"></div>
 </div>
 
