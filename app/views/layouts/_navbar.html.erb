@@ -2,7 +2,7 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <ul class="nav navbar-nav">
-          <li><%= link_to "Index", root_path%></li>
+          <li><%= link_to "Home", root_path%></li>
           <% if current_user %>
             <p class="navbar-text navbar-right">(Logged in as <%= current_user.email %>) <%= link_to "Logout", '/users/logout', html: {class: 'navbar-link'} %></p>
           <% else %>
