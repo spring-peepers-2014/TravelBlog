@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
 
   def index
-    @trips = Trip.all
+    @trips = session[:user_id] ? Trip.all.where(user_id: session[:user_id]) : []
     @trip = Trip.new
   end
 
