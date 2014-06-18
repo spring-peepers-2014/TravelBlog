@@ -7,6 +7,7 @@ $(document).ready(function() {
             location: $("#location-create input[type='text']").val()
         };
         Trip.Controller.addLocation( trip_id, location_name );
+        this.reset();
     });
 
     $("#trip-create").on("submit", function(e) {
@@ -15,6 +16,7 @@ $(document).ready(function() {
             location: $("#trip-create input[type='text']").val()
         };
         Trip.Controller.addTrip( trip_name );
+        this.reset();
     });
 
 });
