@@ -1,4 +1,5 @@
 class TripsController < ApplicationController
+  before_action :validate_user
 
   def index
     @trips = Trip.all
