@@ -9,11 +9,12 @@ describe User do
     expect(build(:user, email: nil)).to_not be_valid
   end
 
+
   it "is invalid without a password" do
     expect(build(:user, password: nil)).to_not be_valid
   end
 
-  it "is invalid without a password" do
+  it "is invalid when password is empty input" do
     expect(build(:user, password: "")).to_not be_valid
   end
 
