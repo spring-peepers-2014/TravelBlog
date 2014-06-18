@@ -1,16 +1,16 @@
 <div id="side" class="col-md-2">
   <div class="btn-group">
     <%= render partial: "trips/back_to_trip_new_post", locals: {trip: @trip} %>
-  </div>  
+  </div>
   <%= render partial: "trips/loc_posts", locals: {locationpins: @trip.location_pins } %>
 </div>
 
-<div class="col-md-10"> 
+<div class="col-md-10">
   <div class="page-header">
-    <h1><%= @location.name %> <small>- Blog Posts</small> </h1> 
+    <h1><%= @location.name %> <small>- Blog Posts</small> </h1>
   </div>
   <h3><%= @trip.title %></h3>
-  <% @posts.each do |post| %>
+  <% @posts.reverse_each do |post| %>
     <div class="panel panel-info">
       <h4 class="panel-heading"><%= link_to post.title, post_path(post) %></h4>
       <div class="panel-body"><%= post.body %></div>

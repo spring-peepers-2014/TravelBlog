@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @post = location_pin.posts.build post_params
 
     if @post.save
-      redirect_to trip_posts_path
+      redirect_to trip_path(trip.id)
     else
       render :"posts/new"
     end
