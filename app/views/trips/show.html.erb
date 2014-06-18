@@ -1,7 +1,6 @@
 <div id="side" class="col-md-2">
   <h2><%= @trip.title %></h2>
   <div class="btn-group">
-    <button id="draw-route" type="button" class="btn btn-primary">Draw Route</button>
     <button type="button" class="btn btn-warning"><%= link_to "Trips", trips_path %></button>
     <button id="add-location-btn" type="button" class="btn btn-info"><%= link_to "Add Location", root_path, remote: true, id: 'add-location' %></button>
       <br><br>

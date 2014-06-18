@@ -1,7 +1,6 @@
 <div id="side" class="col-md-2">
   <h1>Trips</h1>
   <div class="btn-group">
-    <button id="draw-route" type="button" class="btn btn-primary">Draw Route</button>
     <button id="new-trip" type="button" class="btn btn-info"><%= link_to "New Trip", @trip, remote: true %></button>
       <br><br>
         <form class='input-group hidden' action='/trips/#{@trip.id}' method='post' id='trip-create'>
