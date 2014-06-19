@@ -6,8 +6,8 @@ body{
   padding-top: 50px;
 }
 
-#side { 
-  height: 100%;
+#side {
+  height: 250%;
   box-shadow: 3px 0px 2px rgba(0,0,0,1);
   position: relative;
   z-index: 999;
@@ -26,11 +26,11 @@ body{
   color: black;
 }
 
-#map { 
+#map {
   height: 100%;
   padding-left: 0 !important;
 }
-#map-canvas { 
+#map-canvas {
   height: 100%;
   position: fixed !important;
   top: 50px;
@@ -69,7 +69,7 @@ li.list-group-item-text a:before {
     content: '\203A\00a0';
 }
 
-h1.panel-heading, h2.panel-heading, 
+h1.panel-heading, h2.panel-heading,
 h3.panel-heading, h4.panel-heading,
 h5.panel-heading {
   margin-top: 0;
