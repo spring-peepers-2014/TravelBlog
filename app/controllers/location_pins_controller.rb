@@ -23,9 +23,9 @@ class LocationPinsController < ApplicationController
       pin.posts.each do |post|
         posts << { post_id: post.id, post_title: post.title }
       end
-      all_pins <<  { location_name: pin.location.name, coords: pin.location.coords, posts: posts }
+      all_pins <<  { location_name: pin.location.name, coords: pin.coords, posts: posts }
     end
-
+    p all_pins
     if request.xhr?
       render json: all_pins.to_json
     else
