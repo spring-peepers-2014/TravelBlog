@@ -16,13 +16,18 @@ class LocationPinsController < ApplicationController
   end
 
   def index
+    all_pins = []
     @trip = Trip.find params[:trip_id]
-    @pins = @trip.location_pins.map do |pin|
-      { name: pin.name, coords: pin.coords }
+    location_pins = @trip.location_pins
+
+    location_pins.each do |pin|
+      all_pins << { name: pin.location.name, coords: pin.coords }
     end
+
     if request.xhr?
-      render json: @pins.to_json
+      render json: all_pins.to_json
     else
+      @location_pins = location_pins
       render "trips/show"
     end
   end
