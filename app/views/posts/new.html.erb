@@ -1,10 +1,9 @@
 <div id="side" class="col-md-2">
-<h1>New Post</h1>
+  <%= puts "PARAMS: #{params}" %>
+<h1>New Post for <%= params[:data][:locationname] %></h1>
   <%= form_for @post, url: trip_posts_path do |f| %>
     <br>
-      <%= f.label "Location" %>
-      <%= f.text_field :location_pin %>
-    <br>
+      <%= f.text_field :location_pin, value: params[:data][:locationname], hidden: true %><br>
       <%= f.label :title %>
       <%= f.text_field :title %>
     <br>
