@@ -68,7 +68,7 @@ To use Chrome browser for testing with Capybara (default: Firefox):
 ## DEVELOPERS
 
 Please thank our well-respected developers:
-- Christine Feaster, Project Manager/Lead Developer
-- Neal Fennimore, Team Lead
-- Lawrence Manfredi, Team Member
-- Kenneth Uy, Technical Lead
+- Christine Feaster
+- Neal Fennimore
+- Lawrence Manfredi
+- Kenneth Uy
