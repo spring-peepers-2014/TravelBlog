@@ -3,12 +3,15 @@ function LocationPin(name, coords) {
     this.coords = coords;
 }
 
-LocationPin.getByTrip = function(id) {
+LocationPin.getByTrip = function(tripId) {
     $.ajax({
-        url: '/trips/' + id + '/locations'
-    })
-        .done(function(trips) {
-            return trips;
-        })
-        .fail(console.log("Failed"));
+        url: '/trips/' + tripid + '/locations',
+        dataType: "JSON"
+    }).done(function(pins) {
+        allPins = [];
+        pins.forEach(pin, allPins.push(new LocationPin(pin.name, pin.coords)));
+        return allPins;
+    }).fail(function() {
+        console.log("Failed");
+    });
 };

@@ -22,18 +22,7 @@ class TripsController < ApplicationController
     @coords = []
 
     @trip = Trip.find(params[:id])
-    @locationpins = @trip.location_pins
-
-  end
-
-  def show_markers
-    lpins = []
-    locationpins = Trip.find(params[:id]).location_pins
-
-    locationpins.each do |locationpin|
-        lpins << { name: locationpin.location.name, coords: locationpin.coords, posts: {title: "title", body: "body"} }
-    end
-    render json: { lpins: lpins }.to_json
+    @location_pins = @trip.location_pins
   end
 
   private
