@@ -48,14 +48,18 @@ body{
   float: right;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 button a {
   color: white;
 }
 
 button a:hover {
-  text-decoration: none;
   color: white;
 }
+
 
 textarea {
   color: black;
