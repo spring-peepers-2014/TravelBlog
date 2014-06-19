@@ -1,11 +1,11 @@
 <div id="user_index">
   <div id="map" class="col-md-10">
 
-      <div class="modal fade" id="login-modal">
+      <div class="modal" id="login-modal" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
           <div class="modal-content">
 
-            
+
               <% if flash[:login_error] %>
                 <div class="alert alert-danger">
                   <%= flash[:login_error]%>
@@ -20,7 +20,7 @@
                 <%= render "signup" %>
               </div>
             </div>
-            
+
              <div class="col-sm-6">
               <div class="modal-header">
                 <h4 class="modal-title">Login</h4>
