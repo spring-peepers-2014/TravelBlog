@@ -36,7 +36,6 @@ class LocationPinsController < ApplicationController
     location_pin = LocationPin.find params[:id]
     @location = location_pin.location
     @posts = location_pin.posts
-    @photos = location_pin.photos
     @trip = location_pin.trip
   end
 

@@ -1,5 +1,5 @@
 # TRAVEL BLOG
-An app for travelers to document and relive their trips by pinning blog posts and photos to a map.
+An app for travelers to document and relive their trips by pinning blog posts to a map.
 
 ## QUICK START
 Run `$ bundle install`
@@ -13,11 +13,9 @@ A user can create trips
 For each trip, a user can
 - add location markers to the map
 - create blog posts
-- upload photos
 - pin blog posts to a location marker
-- pin photos to a location marker
 - view a map with all location markers
-- click a location marker to see all blog posts and photos pinned to that location
+- click a location marker to see all blog posts pinned to that location
 
 
 ## HOW TO CONTRIBUTE
