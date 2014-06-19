@@ -93,7 +93,11 @@ input[type='submit'].btn { color: white !important;}
 }
 
 #user_index {
-  background: url('/assets/index_bg.png');
+  background: url(<%= asset_path('index_bg.png') %>);
   background-size: cover;
   height: 100%;
+}
+
+#nav-logo {
+  padding: 7px 0 0 0;
 }
