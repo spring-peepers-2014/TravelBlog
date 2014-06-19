@@ -14,6 +14,21 @@ Map = {
       draggable: false
     });
     newPin.name = name;
+
+    var ibOptions = this.infoBoxOptions();
+    var ib = new InfoBox(ibOptions);
+
+    newPin.infoBox = ib;
+    ib.open(this.mapDisplay, newPin);
+
+    google.maps.event.addListener(newPin, 'mouseover', function() {
+       newPin.infoBox.setVisible(1);
+    });
+
+    google.maps.event.addListener(newPin, 'mouseout', function() {
+       newPin.infoBox.setVisible(0);
+    });
+
     this.allPins.push(newPin);
     return newPin;
   },
@@ -44,6 +59,34 @@ Map = {
       pin_names.push(Map.allPins[i].name);
     }
     return pin_names;
+  },
+  infoBoxOptions: function(title, body){
+    var boxTitle = title || "Title";
+    var boxBody = body || "Body";
+
+    var boxText = "<div class='panel-heading'>"+ boxTitle + "</div>" +
+                  "<div class='panel-body'>" + boxBody + "</div>";
+
+    var options = {
+        content: boxText,
+        disableAutoPan: false,
+        maxWidth: 0,
+        pixelOffset: new this.gMap.Size(-100, 0),
+        zIndex: null,
+        boxStyle: {
+          background: "#fffff",
+          opacity: 0.9,
+          width: "200px",
+         },
+        boxClass: 'panel panel-warning',
+        closeBoxMargin: "10px 2px 2px 2px",
+        closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif",
+        infoBoxClearance: new this.gMap.Size(1, 1),
+        isHidden: true,
+        pane: "floatPane",
+        enableEventPropagation: false,
+    };
+    return options;
   }
 
 };
