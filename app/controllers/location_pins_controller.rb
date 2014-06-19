@@ -3,15 +3,13 @@ class LocationPinsController < ApplicationController
 
   def create
     trip = Trip.find params[:trip_id]
-    location = Location.find_by location_params
+    @location_search_term = params[:location]
 
-    if location
-      flash[:location_exists] = "The location #{location} already exists for this trip. Please click the location with this name on the sidebar."
-    else
-      location = Location.create location_params
-    end
+    return nil if location_params.nil?
 
+    location = Location.find_or_create_by(location_params)
     location_pin = trip.location_pins.find_or_create_by(location: location)
+
     render json: { id: location_pin.id, name: location.name, coords: { lat: location.latitude, lon: location.longitude } }.to_json
   end
 
@@ -46,14 +44,10 @@ class LocationPinsController < ApplicationController
   private
 
   def location_params
-    location_cache = params[:location]
-    geolocation = Geocoder.search(location_cache).first
-
+    geolocation = Geocoder.search(@location_search_term).first
     return nil if geolocation.nil? || geolocation.city.nil?
-
     coords = geolocation.coordinates
     city_state_name = "#{geolocation.city}, #{geolocation.state_code}"
-    # city_state_name = geolocation.state_code if city_state_name.split(',').first.empty?
 
     { name: city_state_name, latitude: coords[0], longitude: coords[1] }
   end
