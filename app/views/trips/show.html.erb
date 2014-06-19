@@ -1,7 +1,7 @@
 <div id="side" class="col-md-2">
   <h2><%= @trip.title %></h2>
   <div class="btn-group">
-    <%= link_to content_tag(:button, 'Back to Trips', class: "btn btn-info"), trips_path, remote: true %>
+    <%= link_to content_tag(:button, 'Back to Trips', class: "btn btn-primary"), trips_path, remote: true %>
       <br>
       ￼<%= form_tag("/", method: "get", class: 'input-group', id: 'location-create')  do %>
         <%= text_field_tag('location', nil, placeholder: "Enter trip location here! Ex: New York, NY", class: 'form-control') %>

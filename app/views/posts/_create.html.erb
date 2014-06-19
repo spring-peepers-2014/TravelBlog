@@ -1,0 +1,32 @@
+<div class="modal fade" id="create-post">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title">New Post for <%= params[:data][:locationname] %></h4>
+        </div>
+        <div class="modal-body">
+            <%= form_for @post, url: trip_posts_path do |f| %>
+
+              <%= f.text_field :location_pin, value: params[:data][:locationname], hidden: true %>
+              <div class="form-group">
+                <%= f.label :title %>
+                <%= f.text_field :title, class: 'form-control', required: true  %>
+              </div>
+              <div class="form-group">
+                <%= f.label :body %>
+                <%= f.text_area :body, class: 'form-control', required: true  %>
+              </div>
+
+              <%= f.submit "Create Post", class: 'btn btn-info btn-lg' %>
+          <% end %>
+        </div>
+
+      <div class='clearfix'>&nbsp;</div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+ $('#create-post').modal('show');
+</script>
