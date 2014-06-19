@@ -1,0 +1,103 @@
+html, body {
+  height: 100%;
+}
+
+body{
+  padding-top: 50px;
+}
+
+#side { 
+  height: 100%;
+  box-shadow: 3px 0px 2px rgba(0,0,0,1);
+  position: relative;
+  z-index: 999;
+  background: rgb(44,44,44);
+  background: -moz-linear-gradient(top,  rgba(44,44,44,1) 0, rgba(25,25,25,1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0,rgba(44,44,44,1)), color-stop(100%,rgba(25,25,25,1)));
+  background: -webkit-linear-gradient(top,  rgba(44,44,44,1) 0,rgba(25,25,25,1) 100%);
+  background: -o-linear-gradient(top,  rgba(44,44,44,1) 0,rgba(25,25,25,1) 100%);
+  background: -ms-linear-gradient(top,  rgba(44,44,44,1) 0,rgba(25,25,25,1) 100%);
+  background: linear-gradient(to bottom,  rgba(44,44,44,1) 0,rgba(25,25,25,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c2c', endColorstr='#191919',GradientType=0 );
+  color: white;
+}
+
+#side input {
+  color: black;
+}
+
+#map { 
+  height: 100%;
+  padding-left: 0 !important;
+}
+#map-canvas { 
+  height: 100%;
+  position: fixed !important;
+  top: 50px;
+  width: 100%;
+}
+
+.quick-overlay {
+  background: white;
+  position: absolute;
+  z-index: 9999999;
+  padding: 2em;
+}
+
+.marker_load {
+  float: right;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+button a {
+  color: white;
+}
+
+button a:hover {
+  color: white;
+}
+
+
+textarea {
+  color: black;
+}
+
+li.list-group-item-text a:before {
+    content: '\203A\00a0';
+}
+
+h1.panel-heading, h2.panel-heading, 
+h3.panel-heading, h4.panel-heading,
+h5.panel-heading {
+  margin-top: 0;
+ }
+
+.col-md-10 {
+  padding-top: 15px;
+}
+#map.col-md-10 {
+  padding-top: 0;
+}
+
+input[type='submit'].btn { color: white !important;}
+#login-container {
+  position: fixed;
+  z-index: 9999;
+}
+
+.modal-dialog {
+  padding-top: 15%;
+}
+
+#user_index {
+  background: url(<%= asset_path('index_bg.png') %>);
+  background-size: cover;
+  height: 100%;
+}
+
+#nav-logo {
+  padding: 7px 0 0 0;
+}
