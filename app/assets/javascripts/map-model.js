@@ -29,12 +29,12 @@ Map = {
         newPin.infoBox = ib;
         ib.open(this.mapDisplay, newPin);
 
-        google.maps.event.addListener(newPin, 'mouseover', function() {
-           newPin.infoBox.setVisible(1);
-        });
-
-        google.maps.event.addListener(newPin, 'mouseout', function() {
-           newPin.infoBox.setVisible(0);
+        google.maps.event.addListener(newPin, 'click', function() {
+           if (newPin.infoBox.getVisible() === false){
+            newPin.infoBox.setVisible(1);
+           } else {
+            newPin.infoBox.setVisible(0);
+           }
         });
 
         this.allPins.push(newPin);
@@ -53,9 +53,9 @@ Map = {
                 }
             });
     },
-    infoBoxOptions: function(title, body){
-    var boxTitle = title || "Title";
-    var boxText = "<div class='panel-heading'>"+ boxTitle + "</div>";
+    infoBoxOptions: function(location_name, post_object){
+    var location = location_name || "Area 51";
+    var boxText = "<div class='panel-heading'>"+ location + "</div>";
 
     var options = {
         content: boxText,
@@ -69,7 +69,7 @@ Map = {
          },
         boxClass: 'panel panel-primary',
         closeBoxMargin: "10px 2px 2px 2px",
-        closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif",
+        closeBoxURL: "",
         infoBoxClearance: new this.gMap.Size(1, 1),
         isHidden: true,
         pane: "floatPane",
