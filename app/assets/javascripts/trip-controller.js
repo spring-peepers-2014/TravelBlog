@@ -1,36 +1,36 @@
 Trip.Controller = {
-  addLocation: function(tripid, location_name){
-    $.ajax({
-      url: '/trips/'+ tripid +'/locations',
-      type: "POST",
-      data: location_name,
-      dataType: "JSON"
-    })
-    .done( function(location) {
-      var pin_names = Map._nameMapPins();
+    addLocation: function(tripid, location_name) {
+        $.ajax({
+            url: '/trips/' + tripid + '/locations',
+            type: "POST",
+            data: location_name,
+            dataType: "JSON"
+        })
+            .done(function(location) {
+                var pin_names = Map._nameMapPins();
 
-      if ( $.inArray(location.name, pin_names) < 0 ) {
-       var position = Map.getPosition(location.coords.lat, location.coords.lon);
-       Map.addPin(position, location.name);
-       var trip = new Trip.Presenter(location.name, location.id, "h3").presentLocation();
-       $('#trip-show-container').prepend(trip);
+                if ($.inArray(location.name, pin_names) < 0) {
+                    var position = Map._getPosition(location.coords[0], location.coords[1]);
+                    Map._addPin(position, location.name);
+                    var trip = new Trip.Presenter(location.name, location.id, "h3").presentLocation();
+                    $('#trip-show-container').prepend(trip);
 
-      }
-    });
-  },
-  addTrip: function(trip_name){
-    $.ajax({
-      url: '/trips',
-      type: "post",
-      data: trip_name,
-      dataType: 'JSON'
-    })
-    .done( function(resp) {
-      console.log(resp);
-      if(resp.trip_id !== null) {
-        var trip = new Trip.Presenter(resp.trip_title, resp.trip_id).presentTrip();
-        $(".list-group").prepend(trip);
-      }
-    });
-  },
+                }
+            });
+    },
+    addTrip: function(trip_name) {
+        $.ajax({
+            url: '/trips',
+            type: "post",
+            data: trip_name,
+            dataType: 'JSON'
+        })
+            .done(function(resp) {
+                console.log(resp);
+                if (resp.trip_id !== null) {
+                    var trip = new Trip.Presenter(resp.trip_title, resp.trip_id).presentTrip();
+                    $(".list-group").prepend(trip);
+                }
+            });
+    },
 };
