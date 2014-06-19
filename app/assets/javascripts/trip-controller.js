@@ -10,8 +10,7 @@ Trip.Controller = {
                 var pin_names = Map._nameMapPins();
 
                 if ($.inArray(location.name, pin_names) < 0) {
-                    Map._addPin(Map._getPosition(location.coords.lat, location.coords.lon), location.name);
-                    // debugger;
+                    Map._addPin(Map._getPosition(location.coords.lat, location.coords.lon), location.location_name);
                     var trip = new Trip.Presenter(location.name, location.id, "h3").presentLocation();
                     $('#trip-show-container').prepend(trip);
 

@@ -57,12 +57,14 @@ Map = {
     infoBoxOptions: function(location_name, post_object){
     var location = location_name || "Area 51";
     var boxHeader = "<div class='panel-heading'>"+ location + "</div>";
-    var boxText = "";
-
-    for(var i = 0; i < post_object.length; i++) {
-        boxText += "<li><a href='/posts/"+post_object[i].post_id+"'>"+post_object[i].post_title+"</a></li>";
+    var boxText = "<ul class='list-group'>";
+    console.log(post_object);
+    if(post_object) {
+        for(var i = post_object.length-1; i >= 0; i--) {
+            boxText += "<li class='list-group-item'><a href='/posts/"+post_object[i].post_id+"'>"+post_object[i].post_title+"</a></li>";
+        }
     }
-    var boxList = boxHeader += boxText;
+    var boxList = boxHeader += boxText + '</ul>';
 
     var options = {
         content: boxList,
