@@ -19,7 +19,11 @@ class LocationPinsController < ApplicationController
     location_pins = @trip.location_pins
 
     location_pins.each do |pin|
-      all_pins << { name: pin.location.name, coords: pin.coords }
+      posts = []
+      pin.posts.each do |post|
+        posts << { post_id: post.id, post_title: post.title }
+      end
+      all_pins <<  { location_name: pin.location.name, coords: pin.location.coords, posts: posts }
     end
 
     if request.xhr?
