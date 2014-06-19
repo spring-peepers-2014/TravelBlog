@@ -4,11 +4,9 @@ A user can create trips
 For each trip, a user can
 - add location markers to the map
 - create blog posts
-- upload photos
 - pin blog posts to a location marker
-- pin photos to a location marker
 - view a map with all location markers
-- click a location marker to see all blog posts and photos pinned to that location
+- click a location marker to see all blog posts pinned to that location
 
 ## Completed
 
@@ -41,8 +39,6 @@ User can view a single blog post with title and body. User can create a new blog
 ![Travel Blog Post](http://i.imgur.com/oQzP8k2.png "View Post")
 
 ## In Progress
-- User can upload trip photos
-- User can associate photos with a location pin
 - User can view profile/account settings
 - User can update profile/account settings
 - User can delete account

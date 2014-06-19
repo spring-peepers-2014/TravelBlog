@@ -32,8 +32,4 @@ long pipe resting on the ground", location_pin_id: 4)
 Post.create(title: "Something with Gray", body: " Tomorrow we will get to Spotted Tail without further storm.", location_pin_id: 5)
 
 
-Photo.create(url: "http://www.monsterdisplays.com/v/vspfiles/assets/images/rhode_island_providence.jpg", location_pin_id: 2)
-
-
-
 
