@@ -1,6 +1,6 @@
-<div class="modal" id="create-post">
+<div class="modal" id="create-post" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog">
-    <div class="modal-content" data-backdrop="static" data-keyboard="false">
+    <div class="modal-content">
 
         <div class="modal-header">
           <h4 class="modal-title">New Post for <%= params[:data][:locationname] %></h4>
@@ -18,10 +18,11 @@
                 <%= f.text_area :body, class: 'form-control', required: true  %>
               </div>
 
-              <%= f.submit "Create Post", class: 'btn btn-info btn-lg' %>
+              <%= f.submit "Create Post", class: 'btn btn-primary btn-lg' %>
+              <%= link_to 'Back', :back, class: 'btn btn-info btn-lg' %> 
           <% end %>
         </div>
-
+      
       <div class='clearfix'>&nbsp;</div>
     </div>
   </div>
