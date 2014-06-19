@@ -2,14 +2,15 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <ul class="nav navbar-nav">
-          <li><%= link_to "Home", root_path%></li>
-          <% if current_user %>
-            <p class="navbar-text navbar-right">(Logged in as <%= current_user.email %>) <%= link_to "Logout", '/users/logout', html: {class: 'navbar-link'} %></p>
-          <% else %>
-            <li><%= link_to "Login/Signup", '/users/new' %></li>
-          <% end %>
-
+          <li><%= link_to content_tag(:img, '', src: "/assets/geoscribe.png"), root_path, id: "nav-logo" %></li>
         </ul>
       </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
+          <% if current_user %>
+            <p class="navbar-text navbar-right">Welcome <%= current_user.email %> <%= link_to "Logout", '/users/logout', html: {class: 'navbar-link'} %></p>
+          <% else %>
+            <p class="navbar-text navbar-right"><%= link_to "Login/Signup", '/users/new', html: {class: 'navbar-link'} %></p>
+          <% end %>
+        </div>
     </div>
   </nav>
