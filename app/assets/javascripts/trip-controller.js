@@ -7,9 +7,15 @@ Trip.Controller = {
       dataType: "JSON"
     })
     .done( function(location) {
-      Map.addPin(Map.getPosition(location.coords.lat, location.coords.lon), location.name);
-      var trip = new Trip.Presenter(location.name, location.id, "h3").presentLocation();
-      $('#trip-show-container').prepend(trip);
+      var pin_names = Map._nameMapPins();
+
+      if ( $.inArray(location.name, pin_names) < 0 ) {
+       var position = Map.getPosition(location.coords.lat, location.coords.lon);
+       Map.addPin(position, location.name);
+       var trip = new Trip.Presenter(location.name, location.id, "h3").presentLocation();
+       $('#trip-show-container').prepend(trip);
+
+      }
     });
   },
   addTrip: function(trip_name){
