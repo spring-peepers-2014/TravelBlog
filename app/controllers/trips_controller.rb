@@ -19,8 +19,6 @@ class TripsController < ApplicationController
   end
 
   def show
-    @coords = []
-
     @trip = Trip.find(params[:id])
     @location_pins = @trip.location_pins
   end

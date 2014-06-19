@@ -48,7 +48,7 @@ Map = {
             .done(function(pins) {
                 var tripPins = pins;
                 for (var i = 0; i < tripPins.length; i++) {
-                    var position = Map._getPosition(tripPins[i].coords[0], tripPins[i].coords[1]);
+                    var position = Map._getPosition(tripPins[i].coords.lat, tripPins[i].coords.lon);
                     Map._addPin(position, tripPins[i].name);
                 }
             });
