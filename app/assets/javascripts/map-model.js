@@ -14,7 +14,7 @@ Map = {
         }
         return pin_names;
     },
-    _addPin: function(position, name) {
+    _addPin: function(position, name, post_object) {
         var _this = this;
         var newPin = new this.gMap.Marker({
             position: position,
@@ -22,9 +22,10 @@ Map = {
             draggable: false
         });
         newPin.name = name;
-
-        var ibOptions = this.infoBoxOptions(name);
+        
+        var ibOptions = this.infoBoxOptions(name, post_object);
         var ib = new InfoBox(ibOptions);
+        
 
         newPin.infoBox = ib;
         ib.open(this.mapDisplay, newPin);
@@ -49,16 +50,22 @@ Map = {
                 var tripPins = pins;
                 for (var i = 0; i < tripPins.length; i++) {
                     var position = Map._getPosition(tripPins[i].coords.lat, tripPins[i].coords.lon);
-                    Map._addPin(position, tripPins[i].name);
+                    Map._addPin(position, tripPins[i].location_name, tripPins[i].posts );
                 }
             });
     },
     infoBoxOptions: function(location_name, post_object){
     var location = location_name || "Area 51";
-    var boxText = "<div class='panel-heading'>"+ location + "</div>";
+    var boxHeader = "<div class='panel-heading'>"+ location + "</div>";
+    var boxText = "";
+
+    for(var i = 0; i < post_object.length; i++) {
+        boxText += "<li><a href='/posts/"+post_object[i].post_id+"'>"+post_object[i].post_title+"</a></li>";
+    }
+    var boxList = boxHeader += boxText;
 
     var options = {
-        content: boxText,
+        content: boxList,
         disableAutoPan: true,
         maxWidth: 0,
         pixelOffset: new this.gMap.Size(-100, 0),

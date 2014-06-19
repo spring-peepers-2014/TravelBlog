@@ -1,14 +1,13 @@
 <% locationpins.reverse_each do |locationpin| %>
-  <div class="list-group">
-    <div class="list-group-item">
-     <h3 class="location-names list-group-item-heading">
-      <%= link_to locationpin.name, location_path(locationpin) %></h3>
+    <div class="panel panel-default" style="position:relative">
+     <div class="panel-heading"><h3 style='margin: 0'>
+      <%= link_to locationpin.name, location_path(locationpin) %></h3></div>
 
-      <%= link_to content_tag(:button, 'Add Post', class: "label label-info add-post-label"), new_trip_post_path(locationpin.trip.id, data: { :'locationname' => locationpin.location.name } ) %>
-
-      <% get_posts(locationpin).reverse_each do |post| %>
-      <li class="list-group-item-text"><%= link_to post.title, post_path(post) %></li>
-     <% end %>
+      <%= link_to content_tag(:button, '+', class: "label label-info add-post-label"), new_trip_post_path(locationpin.trip.id, data: { :'locationname' => locationpin.location.name } ) %>
+      <ul class="list-group">
+        <% get_posts(locationpin).reverse_each do |post| %>
+          <li class="list-group-item"><%= link_to post.title, post_path(post) %></li>
+       <% end %>
+      </ul>
     </div>
-  </div>
 <% end %>
