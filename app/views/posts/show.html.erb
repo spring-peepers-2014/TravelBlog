@@ -1,6 +1,7 @@
 <div id="side" class="col-md-2">
   <div class="btn-group">
     <%= render partial: "trips/back_to_trip_new_post", locals: {trip: @trip} %>
+      <%= render partial: "trips/loc_posts", locals: {locationpins: @location_pins} %>
   </div>
   <div class="clearfix">&nbsp;</div>
 </div>
