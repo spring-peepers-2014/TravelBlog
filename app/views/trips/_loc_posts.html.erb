@@ -1,6 +1,6 @@
 <% locationpins.reverse_each do |locationpin| %>
-    <div class="panel panel-default" style="position:relative">
-     <div class="panel-heading"><h3 style='margin: 0'>
+    <div class="panel panel-default panel-relative">
+     <div class="panel-heading"><h3 class='h3-location'>
       <%= link_to locationpin.name, location_path(locationpin) %></h3></div>
 
       <%= link_to content_tag(:button, '+', class: "label label-info add-post-label"), new_trip_post_path(locationpin.trip.id, data: { :'locationname' => locationpin.location.name } ) %>
