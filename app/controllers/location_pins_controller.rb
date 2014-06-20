@@ -51,7 +51,8 @@ class LocationPinsController < ApplicationController
     geolocation = Geocoder.search(@location_search_term).first
     return nil if geolocation.nil? || geolocation.city.nil?
     coords = geolocation.coordinates
-    city_state_name = "#{geolocation.city}, #{geolocation.state_code}"
+    full_location_name = geolocation.formatted_address.split(', ')
+    city_state_name = "#{full_location_name[0]}, #{geolocation.state_code}"
 
     { name: city_state_name, latitude: coords[0], longitude: coords[1] }
   end

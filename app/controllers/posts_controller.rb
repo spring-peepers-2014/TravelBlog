@@ -2,10 +2,10 @@ class PostsController < ApplicationController
   before_action :validate_user
   include PostHelper
 
-  def index
-    @trip = Trip.find params[:trip_id]
-    @locations = @trip.location_pins
-  end
+  # def index
+  #   @trip = Trip.find params[:trip_id]
+  #   @locations = @trip.location_pins
+  # end
 
   def new
     @trip = Trip.find params[:trip_id]
@@ -13,9 +13,10 @@ class PostsController < ApplicationController
   end
 
   def create
+    location_name = params["post"]["location_pin"]
     trip = Trip.find params[:trip_id]
-    location = Location.find_or_create_by location_params
-    location_pin = trip.location_pins.find_or_create_by(location: location)
+    location = Location.where(name: location_name).first
+    location_pin = LocationPin.where(trip: trip, location: location).first
 
     @post = location_pin.posts.build post_params
 
