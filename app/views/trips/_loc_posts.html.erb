@@ -3,7 +3,7 @@
      <div class="panel-heading"><h3 class='h3-location'>
       <%= link_to locationpin.name, location_path(locationpin) %></h3></div>
 
-      <%= link_to content_tag(:button, '+', class: "label label-info add-post-label"), new_trip_post_path(locationpin.trip.id, data: { :'locationname' => locationpin.location.name } ) %>
+      <%= button_to '+', new_trip_post_path(locationpin.trip.id), form_class: "label label-info add-post-label", params: { :'locationname' => locationpin.location.name }, method: :get %>
       <ul class="list-group">
         <% get_posts(locationpin).reverse_each do |post| %>
           <li class="list-group-item"><%= link_to post.title, post_path(post) %></li>
