@@ -1,8 +1,11 @@
 <div id="side" class="col-md-2">
   <h1>Trips</h1>
+  <hr>
   <div class="btn-group">
+    <h4 style="float:left;">Add Trip</h4>
+    <br>
       ￼<%= form_tag("/", method: "get", class: 'input-group', id: 'trip-create')  do %>
-        <%= text_field_tag('location', nil, placeholder: "My Road Trip Summer 2011", class: 'form-control') %>
+        <%= text_field_tag('location', nil, placeholder: "Trip Title", class: 'form-control') %>
         <span class='input-group-btn'><%= submit_tag("+", class: 'btn btn-warning') %></span>
       <% end %>
       <br>
