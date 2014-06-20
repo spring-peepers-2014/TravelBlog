@@ -29,6 +29,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find params[:id]
     @trip = @post.trip
+    @location_pins = @post.trip.location_pins
   end
 
   def edit
