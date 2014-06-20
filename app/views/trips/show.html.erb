@@ -3,8 +3,10 @@
   <div class="btn-group">
     <%= link_to content_tag(:button, 'Back to Trips', class: "btn btn-primary"), trips_path, remote: true %>
       <br>
+      <hr>
+      <h3 class="h3-location">Add location</h3>
       ￼<%= form_tag("/", method: "get", class: 'input-group', id: 'location-create')  do %>
-        <%= text_field_tag('location', nil, placeholder: "Enter location: New York, NY", class: 'form-control') %>
+        <%= text_field_tag('location', nil, placeholder: "City, State", class: 'form-control') %>
         <span class='input-group-btn'><%= submit_tag("+", class: 'btn btn-warning') %></span>
       <% end %>
       <br>

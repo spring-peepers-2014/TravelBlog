@@ -4,6 +4,7 @@ html, body {
 
 body{
   padding-top: 50px;
+  overflow-y:hidden;
 }
 
 #side { 
@@ -20,6 +21,8 @@ body{
   background: linear-gradient(to bottom,  rgba(44,44,44,1) 0,rgba(25,25,25,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c2c', endColorstr='#191919',GradientType=0 );
   color: white;
+  overflow: auto; 
+  /*scroll bars will appear on everything but chrome*/
 }
 
 #side input {
@@ -106,4 +109,16 @@ input[type='submit'].btn { color: white !important;}
   position: absolute; 
   top: 15px;
   right: 4px;
+}
+
+.h3-location{
+  margin: 0;
+}
+
+.panel-relative {
+  position: relative;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
 }
