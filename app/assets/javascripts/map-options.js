@@ -1,6 +1,6 @@
 var mapOptions = {
-    center: new google.maps.LatLng(40.7127837, -74.0059413),
-    zoom: 7,
+    center: new google.maps.LatLng(37.50,-90.35),
+    zoom: 5,
     styles: [{
         "featureType": "water",
         "stylers": [{
